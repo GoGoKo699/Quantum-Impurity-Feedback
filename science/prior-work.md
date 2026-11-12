@@ -54,7 +54,7 @@ This is a direct antecedent for combining noisy selfconsistency with inverse-err
 
 ## General nonlinear algorithms and normalization
 
-[Brüstle and Wiebe](../references/REFERENCES.md#brustle2025) give quantum and classical algorithms for nonlinear unitary dynamics. Their Corollary 13 already combines state preparation, its inverse, and expectation estimation to obtain inverse-$\epsilon$ output precision, up to logarithms and their coefficient-norm parameters. General polynomial systems can be transformed into their quadratic form.
+[Brüstle and Wiebe](../references/REFERENCES.md#brustle2025) give quantum and classical algorithms for nonlinear unitary dynamics. Their Corollary 13 already combines state preparation, its inverse, and expectation estimation to obtain an output estimate at cost proportional to $1/\epsilon$, up to logarithms and their coefficient-norm parameters. General polynomial systems can be transformed into their quadratic form.
 
 Directly vectorizing the present density equation gives the quadratic coefficient map
 
@@ -75,7 +75,7 @@ These results do not directly give the arbitrary bounded-observable feedback gua
 
 [Lloyd et al.](../references/REFERENCES.md#lloyd2020) realize nonlinear evolution through symmetrized interactions among copies and a mean-field limit. Such interactions can have small physical operator norm even when a flattened polynomial coefficient matrix does not. Their analysis includes finite-copy and discretization errors. This is an important alternative to measured feedback; the present result does not establish a separation from every refined many-copy implementation. The specific complete scalar precision bound claimed here was not identified in that construction.
 
-[Liu and Lin](../references/REFERENCES.md#liu2024) analyze time-accumulated observables for prescribed quantum dynamics, including near-$T/\epsilon$ complexity for certain low-rank outputs. Their output variable does not in general feed back into the Hamiltonian. Adding an unknown selfconsistent field therefore needs a separate analysis, while their work supplies relevant precedent for pricing the observable rather than stopping at a prepared state.
+[Liu and Lin](../references/REFERENCES.md#liu2024) analyze time-accumulated observables for prescribed quantum dynamics, including complexity near $T/\epsilon$ for certain low-rank outputs. Their output variable does not in general feed back into the Hamiltonian. Adding an unknown selfconsistent field therefore needs a separate analysis, while their work supplies relevant precedent for pricing the observable rather than stopping at a prepared state.
 
 ## Impurity physics and the classical comparison
 

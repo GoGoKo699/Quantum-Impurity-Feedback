@@ -231,7 +231,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 
 **Choosing all reconstruction parameters together**
 
-- **Central question:** How does the theorem reach final error $\epsilon$ without an inverse-$\epsilon$ number of time panels?
+- **Central question:** How does the theorem reach final error $\epsilon$ without a number of time panels proportional to $1/\epsilon$?
 - **Understanding target:** Connect the local tolerance $\eta=\epsilon e^{-2\kappa}/16$ to the degree $q$, iteration count $I$, nodal tolerance $\delta$, coefficient tolerance $\beta$ and panel count $P$. Account for $J=P(q+1)I$ response evaluations and for panel boundaries at supplied pulse changes.
 - **Dependencies and story role:** M14–M18. This integrates the local analytic, contraction and global-stability ingredients into a finite acquisition plan.
 - **Conceptual connection:** At fixed physical parameters the temporal representation and iteration counts grow only polylogarithmically with inverse accuracy. The theorem preserves an algebraic precision cost for acquiring response values; it does not eliminate that cost.
@@ -252,7 +252,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **The complete quantum cost statement**
 
 - **Central question:** What remains of the precision improvement after every response and classical operation is priced?
-- **Understanding target:** Combine $J$, the inverse-$\delta$ estimation cost, the full prefix cost and adaptive confidence amplification. Include input reading, circuit generation, classical gate-control instructions, coefficient storage and endpoint evaluation. Read $G+C_{\rm cl}=\widetilde O(\epsilon^{-1})$ with physical/input parameters and failure probability fixed.
+- **Understanding target:** Combine $J$, the estimation cost proportional to $1/\delta$, the full prefix cost and adaptive confidence amplification. Include input reading, circuit generation, classical gate-control instructions, coefficient storage and endpoint evaluation. Read $G+C_{\rm cl}=\widetilde O(\epsilon^{-1})$ with physical/input parameters and failure probability fixed.
 - **Dependencies and story role:** M08 and M19–M20. This completes the constructive quantum part of the narrative.
 - **Conceptual connection:** For growing instances, $e^{O(\kappa)}$, numerical norm–time products and input resources remain visible. A fixed-parameter precision upper bound is different from a universal classical precision lower bound or a hardware crossover estimate.
 - **Sources:** [Lin §1.10 and §4.2][lin]; [complete cost, §§7–9](../science/complete-cost.md#7-end-to-end-resource-theorem); [bridge, §6](BRIDGE.md#6-from-a-response-circuit-to-the-full-cost).

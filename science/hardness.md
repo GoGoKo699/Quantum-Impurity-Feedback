@@ -62,7 +62,7 @@ Hopping and orbital phases therefore implement arbitrary single-qubit rotations.
 $$
 \exp(-i\pi n_{a_j}n_{a_k})
 $$
-acts as a logical controlled-$Z$.
+acts as a logical controlled $Z$ gate.
 
 Only the fixed physical pair $(u,v)$ needs an interaction. Let $W$ be a Gaussian unitary that permutes the selected modes $a_j,a_k$ into $u,v$. Then
 $$
@@ -230,7 +230,7 @@ and apply Grönwall's inequality. The bound is independent of the norm of the co
 
 ## 6. A direct source-free hardness corollary with an active probe
 
-This subsection uses a stronger, explicitly charged control promise: the bare computation can be compressed into a short fixed interval by scaling **all required controls**, including the quartic interaction strength. It is not a fixed-$\chi$, bounded-strength, fixed-time statement.
+This subsection uses a stronger, explicitly charged control promise: the bare computation can be compressed into a short fixed interval by scaling **all required controls**, including the quartic interaction strength. It does not establish a statement at fixed $\chi$, bounded strength and fixed time.
 
 Set
 $$
@@ -255,7 +255,7 @@ Compile its dual-rail impurity implementation, including final routing of both o
 $$
 \zeta=2^{-16}.
 $$
-Choose the output convention in which acceptance corresponds to the $Z_L=+1$ state. A fixed final logical $X$, included before the final routing and within the compilation budget, converts the usual acceptance-bit-$1$ convention when needed.
+Choose the output convention in which acceptance corresponds to the $Z_L=+1$ state. A fixed final logical $X$, included before the final routing and within the compilation budget, converts the usual acceptance convention with output bit $1$ when needed.
 
 Compress that entire bare computation into $[0,t_c]$. Its pulse count and description length stay polynomial, while its control norms, including the quartic strength, grow polynomially and are charged.
 

@@ -136,7 +136,7 @@ $$
 
 The exact local mean satisfies $m_\sigma=F_\sigma(m_\sigma)$. This is a fixed-point relation: if the mean used to drive the dynamics equals the mean returned by those dynamics, the field is selfconsistent.
 
-Choose $q+1$ Chebyshev–Lobatto times on the panel and interpolate the reported responses with a degree-$q$ polynomial. These times are more concentrated near the endpoints than a uniform grid. Let $I_q$ denote this interpolation operation. Its Lebesgue bound $L_q$ measures the largest amplification of nodal errors into an error anywhere on the panel; the chosen nodes give $L_q=O(\log(q+1))$.
+Choose $q+1$ Chebyshev–Lobatto times on the panel and interpolate the reported responses with a polynomial of degree $q$. These times are more concentrated near the endpoints than a uniform grid. Let $I_q$ denote this interpolation operation. Its Lebesgue bound $L_q$ measures the largest amplification of nodal errors into an error anywhere on the panel; the chosen nodes give $L_q=O(\log(q+1))$.
 
 The algorithm iterates the finite map $v\mapsto I_qF_\sigma(v)$. Two different estimates make this useful.
 

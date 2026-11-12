@@ -29,7 +29,7 @@ The [model and output contract](science/model.md) also gives a collective-unit H
 
 ## What the complete cost contains
 
-Let $\kappa=\lambda T$ be the feedback action. The reconstruction uses $P$ time panels, degree-$q$ polynomials, $I$ contraction rounds per panel and
+Let $\kappa=\lambda T$ be the feedback action. The reconstruction uses $P$ time panels, polynomials of degree $q$, $I$ contraction rounds per panel and
 
 $$
 J=P(q+1)I
@@ -89,7 +89,7 @@ For $V=\chi n_un_v$, after absorbing identity and quadratic pieces into $Q$, the
 | General programmable impurity, $\kappa=1$ | A universal efficient classical estimator would imply $\mathrm{BPP}=\mathrm{BQP}$ by an adaptive reduction |
 | Source-free, polynomial-strength compressed computation followed by an active probe | A direct BQP-complete constant-gap decision problem; feedback changes the final measured mean by a certified constant |
 
-The [classical-boundary proof](science/classical-boundary.md) pays for finite sampling, Gaussian propagation, Pfaffian evaluation and feedback reconstruction. Its exponential-in-$S$ variance bound is a sufficient algorithmic bound, not a classical lower bound. Large $S$ alone does not certify hardness.
+The [classical-boundary proof](science/classical-boundary.md) pays for finite sampling, Gaussian propagation, Pfaffian evaluation and feedback reconstruction. Its variance bound is exponential in $S$ and is a sufficient algorithmic bound, not a classical lower bound. Large $S$ alone does not certify hardness.
 
 The [hardness proof](science/hardness.md) states the required controls, initial particle occupations, routing, rational compilation and decision promises. Compressing the computation into fixed time scales all required Hamiltonian strengths, including the quartic interaction. A fixed-time, fixed-strength claim would not follow from that construction.
 

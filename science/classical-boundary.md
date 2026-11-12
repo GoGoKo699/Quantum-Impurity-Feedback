@@ -352,7 +352,7 @@ $$
 \|Y(z)\|\le e^{\Gamma|z|}<2.
 \tag{39}
 $$
-Its degree-$\ell$ Taylor polynomial has local operator-norm error at most $4\,2^{-\ell}$ at a real substep endpoint.
+Its Taylor polynomial of degree $\ell$ has local operator-norm error at most $4\,2^{-\ell}$ at a real substep endpoint.
 
 Across a whole prefix, the number of substeps is at most
 $$

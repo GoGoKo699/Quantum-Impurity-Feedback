@@ -49,7 +49,7 @@ $$
 $$
 It is harmless to replace $\eta$ by a computable dyadic lower approximation between $\eta/2$ and $\eta$.
 
-Let $I_q$ denote degree-$q$ interpolation at the $q+1$ Chebyshev–Lobatto nodes on a panel. Let $L_q$ be any certified upper bound for its Lebesgue constant. A convenient analytic choice is
+Let $I_q$ denote interpolation of degree $q$ at the $q+1$ Chebyshev–Lobatto nodes on a panel. Let $L_q$ be any certified upper bound for its Lebesgue constant. A convenient analytic choice is
 $$
 L_q=2+\frac{2}{\pi}\log(q+1).
 \tag{4}
@@ -89,7 +89,7 @@ $$
 J=P(q+1)I
 \tag{8}
 $$
-and $P$ is the predetermined panel count. The coefficient computation must produce a real degree-$q$ polynomial whose sup-norm discrepancy from the exact interpolant of the clipped reports is at most $\beta$.
+and $P$ is the predetermined panel count. The coefficient computation must produce a real polynomial of degree $q$ whose sup-norm discrepancy from the exact interpolant of the clipped reports is at most $\beta$.
 
 Let the ideal prepared initial state be $\rho_{\rm prep}$, with
 $$
@@ -255,7 +255,7 @@ $$
 \mathcal C_\sigma(v)=I_qF_\sigma(v)
 \tag{27}
 $$
-on the real degree-$q$ polynomial space has contraction factor
+on the space of real polynomials of degree at most $q$ has contraction factor
 $$
 \theta_k=2\lambda h_kL_q\le\frac12.
 \tag{28}
