@@ -1,0 +1,21 @@
+# Quantum Impurity Feedback
+
+> Finite-input scalar mean-field dynamics: noisy spectral reconstruction, complete quantum cost, a classical Gaussian/Dyson easy regime, and qualified programmable impurity hardness.
+
+## Scientific entry points
+
+- [Overview](README.md): Question, results, complete-task contract and limits.
+- [Scientific route](science/README.md): Connected reading order through the argument.
+- [Model](science/model.md): Explicit pulses, state preparation, centered occupation, feedback action and interaction action.
+- [Spectral reconstruction](science/spectral-reconstruction.md): Analytic radius, noisy collocation, finite coefficients and global error proof.
+- [Complete cost](science/complete-cost.md): Arithmetic, sparse access, simulation, replay, amplitude estimation, classical work and memory.
+- [Classical boundary](science/classical-boundary.md): Gaussian shortcuts and a finite Poisson/Dyson/Wick algorithm for weak interaction action.
+- [Hardness](science/hardness.md): Dual-rail impurity universality, causal adaptive transfer and a source-free active-probe decision corollary.
+- [Exact example](science/examples.md): Analytic hyperbolic-secant response, with its deliberately limited computational role.
+- [Prior work](science/prior-work.md): Attribution and comparison with the closest existing mechanisms.
+- [Verification](science/verification.md): Reproducible finite checks and the limits of numerical evidence.
+- [References](references/REFERENCES.md): Primary papers and source locators.
+
+## Interpretation constraints
+
+The quantum precision result is an upper bound at fixed physical parameters. The complexity obstruction assumes BPP differs from BQP, growing explicit input families, polynomial numerical resources and the stated programmable controls. Every response re-prepares the original state and replays its full prefix. The hard family has active feedback but inherits its computational hardness from the underlying quantum circuit. Large bath size, a nonlinear observable, or a large interaction-action upper bound alone does not establish advantage. No natural-material or fault-tolerant-hardware crossover is claimed.
