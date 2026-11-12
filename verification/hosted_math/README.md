@@ -17,6 +17,7 @@ node verification/hosted_math/probe_hosted_math.cjs \
 node verification/hosted_math/capture_hosted_math.cjs \
   --root /absolute/checkout --repository GoGoKo699/Quantum-Impurity-Feedback \
   --revision FULL_COMMIT_SHA \
+  --contract verification/hosted_math/contract.json \
   --output /absolute/new-empty-capture-directory
 ```
 
@@ -25,6 +26,8 @@ Replace the placeholder paths and revision with actual values. The collector rea
 ## Interpret the evidence
 
 The automated comparison checks source identity, page and expression counts, symbols, structural relationships, labels, renderer errors and specified geometry conditions. Inspect the screenshots for readability and compare important equations with the source; a passing automated report does not establish visual quality or scientific correctness.
+
+The explicit text contract additionally checks the content of selected model, cost, stability, classical-boundary and probe formulas. Each entry is bound to the exact expression hash and its position on the page. If a formula changes, review that entry against the new source before updating it.
 
 A failed capture can reflect a source-formatting defect, a transient network failure, missing runtime capability or an access restriction. Preserve the actual failure and address its cause. No access setting is changed by these scripts. Exact-source interrupted captures may be resumed through the collector's documented `--resume-from` option when their artifact, runtime and freshness checks pass.
 

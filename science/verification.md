@@ -36,8 +36,8 @@ $$
 Its exact Bloch coordinates are
 $$
 x(t)=\tanh^2(2t),\qquad
-y(t)=-\operatorname{sech}(2t)\tanh(2t),\qquad
-z(t)=\operatorname{sech}(2t).
+y(t)=-\mathrm{sech}(2t)\tanh(2t),\qquad
+z(t)=\mathrm{sech}(2t).
 $$
 They satisfy the Bloch equations and the conserved relation $x+z^2=1$. This checks the nonlinear reference solver against an analytic solution, rather than comparing two unconstrained numerical trajectories.
 
@@ -108,9 +108,9 @@ a_0=2^{-24},\qquad
 \zeta=2^{-16},\qquad
 d_0=2t_c+2\sqrt{a_0}+2\zeta=\frac{81}{32768}.
 $$
-The script encloses $e^{2\tau_p}$ by a positive Taylor sum through degree 32 and a geometric bound on its remaining tail. It encloses $\cosh(\tau_p)$ using the corresponding positive even-power series, then inverts that positive interval to enclose $\operatorname{sech}(\tau_p)$. For $\cos(\tau_p)$, the alternating series and its first omitted term give upper and lower rational bounds. No floating-point exponential, trigonometric evaluation, or square root is used.
+The script encloses $e^{2\tau_p}$ by a positive Taylor sum through degree 32 and a geometric bound on its remaining tail. It encloses $\cosh(\tau_p)$ using the corresponding positive even-power series, then inverts that positive interval to enclose $\mathrm{sech}(\tau_p)$. For $\cos(\tau_p)$, the alternating series and its first omitted term give upper and lower rational bounds. No floating-point exponential, trigonometric evaluation, or square root is used.
 
-If $E_+$, $S_-$, and $C_+$ denote the resulting upper bound on $e^{2\tau_p}$, lower bound on $\operatorname{sech}(\tau_p)$, and upper bound on $\cos(\tau_p)$, the exact rational comparisons certify
+If $E_+$, $S_-$, and $C_+$ denote the resulting upper bound on $e^{2\tau_p}$, lower bound on $\mathrm{sech}(\tau_p)$, and upper bound on $\cos(\tau_p)$, the exact rational comparisons certify
 $$
 S_--E_+d_0>\frac58,
 \qquad

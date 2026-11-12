@@ -37,3 +37,7 @@ These are worst-case statements for explicitly programmable families. The hard c
 [Prior work](prior-work.md) compares the construction with spectral self-consistent propagation, noisy quantum fixed points, expectation-valued Hamiltonians, Carleman methods, many-copy mean-field simulation and quantum impurity solvers. The contribution is the stated composition with physical norm bounds and a finite complete cost account, together with the classical boundary and qualified hard-family consequences.
 
 [Verification](verification.md) describes the reproducible small-state checks, the exact-probe inequality check and their limits. [References](../references/REFERENCES.md) gives the primary source record. These sources and checks support different parts of the argument; the numerical examples are not evidence of asymptotic quantum advantage.
+
+## Learning and reproduction routes
+
+For a guided conceptual route, the [learning entry point](../learning/README.md), [Lin-to-project bridge](../learning/BRIDGE.md) and [30 milestones](../learning/MILESTONES.md) connect the anchor's quantum-algorithm foundations to these proofs. The [reproduction guide](../verification/README.md) gives executable commands, dependencies and expected finite results. These routes point back to the same canonical model and theorem statements.

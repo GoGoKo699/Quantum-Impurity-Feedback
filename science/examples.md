@@ -4,7 +4,7 @@ A two-mode, one-fermion sector provides a transparent diagnostic. In its dual-ra
 
 $$
 H(t)=\Omega X+\lambda z(t)Z,\qquad
-z(t)=\operatorname{Tr}[Z\rho(t)],\qquad
+z(t)=\mathrm{Tr}[Z\rho(t)],\qquad
 \rho(0)=|0\rangle\langle0|.
 \tag{E1}
 $$
@@ -32,13 +32,13 @@ $$
 are conserved. At $\lambda=2\Omega$, a solution satisfying the initial condition is
 
 $$
-z(t)=\operatorname{sech}(\lambda t),\qquad
+z(t)=\mathrm{sech}(\lambda t),\qquad
 x(t)=\tanh^2(\lambda t),\qquad
-y(t)=-\operatorname{sech}(\lambda t)\tanh(\lambda t).
+y(t)=-\mathrm{sech}(\lambda t)\tanh(\lambda t).
 \tag{E3}
 $$
 
-Direct substitution in (E2) verifies all three equations, including the initially zero derivative of $z$. Uniqueness of the finite-dimensional equation identifies this as the physical solution. Starting from the opposite pole gives $z(t)=-\operatorname{sech}(\lambda t)$, with the corresponding sign reversal of $y$ and unchanged $x$.
+Direct substitution in (E2) verifies all three equations, including the initially zero derivative of $z$. Uniqueness of the finite-dimensional equation identifies this as the physical solution. Starting from the opposite pole gives $z(t)=-\mathrm{sech}(\lambda t)$, with the corresponding sign reversal of $y$ and unchanged $x$.
 
 With the feedback term removed, the same $\Omega X$ drive gives
 

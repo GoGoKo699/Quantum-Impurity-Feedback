@@ -57,7 +57,7 @@ The assumptions for the classical bound are:
   This is a bound for a declared decomposition; it is not asserted to be an intrinsic optimum over all representations.
 - The initial state $\rho_0$ is Gaussian and has an explicitly computable two-point matrix
   $$
-  C^{(0)}_{jk}=\operatorname{Tr}(\rho_0\gamma_j\gamma_k).
+  C^{(0)}_{jk}=\mathrm{Tr}(\rho_0\gamma_j\gamma_k).
   \tag{7}
   $$
   The main example is a specified product Fock state, including one fermion per encoded pair. Its two-point matrix is immediate from the occupation string.
@@ -126,7 +126,7 @@ Assume first that $S_\tau>0$. Generate a random word as follows:
 4. Set
    $$
    W=(-i)^k
-   \left(\prod_{j=1}^k\operatorname{sgn}v_{a_j}(t_j)\right)
+   \left(\prod_{j=1}^k\mathrm{sgn}v_{a_j}(t_j)\right)
    M_{a_k}^I(t_k)\cdots M_{a_1}^I(t_1).
    \tag{14}
    $$
@@ -145,12 +145,12 @@ Take two independent words $W,W'$. The prescribed response is
 $$
 \begin{aligned}
 F_p(\tau)
-&=\operatorname{Tr}\!\left[
+&=\mathrm{Tr}\!\left[
 \rho_0 U_I(\tau)^\dagger O^I(\tau)U_I(\tau)
 \right]\\
 &=e^{2S_\tau}\mathbb E Z,
 \qquad
-Z=\operatorname{Re}\operatorname{Tr}
+Z=\mathrm{Re}\mathrm{Tr}
 \!\left[\rho_0 W^\dagger O^I(\tau)W'\right].
 \end{aligned}
 \tag{16}
@@ -222,8 +222,8 @@ $$
 $$
 the recursion is
 $$
-\operatorname{Pf}(\mathsf C)
-=a\operatorname{Pf}
+\mathrm{Pf}(\mathsf C)
+=a\mathrm{Pf}
 \left(D+\frac{vu^T-uv^T}{a}\right),
 \tag{24}
 $$
@@ -390,7 +390,7 @@ C_G(\nu)=
 O\!\left(
 N_G\left[
 n^3(q+1)(\ell+1)+n^2(q+1)^2
-\right]\operatorname{poly}(B_G)
+\right]\mathrm{poly}(B_G)
 \right),
 \tag{43}
 $$
@@ -417,7 +417,7 @@ O\!\left(
 \left[
 n^2D_w^2+D_w^3+
 M\bigl(K+R_V+\log(M+1)\bigr)
-\right]\operatorname{poly}(B_W)
+\right]\mathrm{poly}(B_W)
 \right).
 \end{aligned}
 \tag{44}
@@ -430,7 +430,7 @@ Use the [certified spectral algorithm](spectral-reconstruction.md) for
 $$
 \dot\rho=-i[Q_0(t)+b(t)A+V(t)+\lambda m(t)A,\rho],
 \qquad
-m(t)=\operatorname{Tr}(O\rho(t)).
+m(t)=\mathrm{Tr}(O\rho(t)).
 \tag{45}
 $$
 Its parameters are

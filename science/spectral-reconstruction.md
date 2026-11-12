@@ -27,7 +27,7 @@ The target equation is
 $$
 \dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
 \qquad
-m(t)=\operatorname{Tr}(O\rho(t)),
+m(t)=\mathrm{Tr}(O\rho(t)),
 \tag{1}
 $$
 and the feedback action is
@@ -150,7 +150,7 @@ Suppose panels $0,\ldots,k-1$ already have stored polynomials $p_0,\ldots,p_{k-1
 For any real continuous function $v$ on the current panel of length $h_k$, let
 $$
 F_{\sigma_k}(v)(s)
-=\operatorname{Tr}\!\left[
+=\mathrm{Tr}\!\left[
 O\,U_v(s)\sigma_k U_v(s)^\dagger
 \right],
 \quad
@@ -175,14 +175,14 @@ On each pulse interval the vector field in (1) is locally Lipschitz on finite-di
 
 For the quantitative complex-time bound, start at any physical state $\sigma$ at the left end of a panel and continue the current constant $B_j$ as a constant across a complex neighborhood. Define
 $$
-\mathcal V(R)=-i[B_j+\lambda\operatorname{Tr}(OR)A,R].
+\mathcal V(R)=-i[B_j+\lambda\mathrm{Tr}(OR)A,R].
 \tag{17}
 $$
 This is a holomorphic polynomial in the entries of $R$. The use of a complex matrix $R$, rather than a wavefunction and its conjugate, is useful here.
 
 On the trace-norm ball $\|R-\sigma\|_1\le1$, one has $\|R\|_1\le2$. The inequalities
 $$
-|\operatorname{Tr}(OR)|\le\|R\|_1,
+|\mathrm{Tr}(OR)|\le\|R\|_1,
 \qquad
 \|[X,Y]\|_1\le2\|X\|\|Y\|_1
 \tag{18}
@@ -220,7 +220,7 @@ r_*(2\Lambda+8\lambda)\le\frac14.
 $$
 The integrand is holomorphic and the integral may be taken along the straight segment. The fixed point is holomorphic, satisfies $\|R(z)\|_1\le2$, and agrees with the physical solution for real $z$ by uniqueness. Its mean
 $$
-m_\sigma(z)=\operatorname{Tr}(OR(z))
+m_\sigma(z)=\mathrm{Tr}(OR(z))
 \tag{23}
 $$
 is therefore holomorphic and bounded by $2$ on that disk.
@@ -432,7 +432,7 @@ If the compiled response primitive has inverse-linear precision cost, then (14)â
 
 ## Edge cases and extensions
 
-**Zero elapsed time.** For $T=0$, the target is $\operatorname{Tr}(O\rho_0)$. Estimate it directly using the supplied initial preparation, charging that operation. No time table is needed.
+**Zero elapsed time.** For $T=0$, the target is $\mathrm{Tr}(O\rho_0)$. Estimate it directly using the supplied initial preparation, charging that operation. No time table is needed.
 
 **Constant equation.** If $\Lambda=\lambda=0$, the state is constant. One initial expectation estimate suffices; it is not supplied for free.
 
@@ -446,7 +446,7 @@ If the compiled response primitive has inverse-linear precision cost, then (14)â
 $$
 H(t)=B(t)+\sum_{a=1}^{d}\lambda_a m_a(t)A_a,
 \qquad
-m_a(t)=\operatorname{Tr}(O_a\rho(t)),
+m_a(t)=\mathrm{Tr}(O_a\rho(t)),
 \tag{46}
 $$
 with bounded Hermitian $A_a,O_a$, replace $\lambda$ everywhere by

@@ -51,6 +51,7 @@ jobs:
             --root "$GITHUB_WORKSPACE" \
             --repository "$GITHUB_REPOSITORY" \
             --revision "$CAPTURE_REVISION" \
+            --contract verification/hosted_math/contract.json \
             --output "$RUNNER_TEMP/hosted-evidence/full"
       - name: Retain actual captures and comparison reports
         if: always()

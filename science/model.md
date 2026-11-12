@@ -29,7 +29,7 @@ For $\lambda\ge0$ and $T>0$, the target is the unique physical solution of
 
 $$
 \dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
-\qquad m(t)=\operatorname{Tr}[A\rho(t)],
+\qquad m(t)=\mathrm{Tr}[A\rho(t)],
 \qquad \rho(0)=\rho_0.
 \tag{M1}
 $$
@@ -101,13 +101,13 @@ The first marginal of a permutation-symmetric state obeys
 
 $$
 \dot\rho_1=-i[B,\rho_1]
- -i\lambda\operatorname{Tr}_2[A\otimes A,\rho_{12}].
+ -i\lambda\mathrm{Tr}_2[A\otimes A,\rho_{12}].
 $$
 
 The product closure $\rho_{12}\approx\rho\otimes\rho$ gives (M1), because
 
 $$
-\operatorname{Tr}_2[A\otimes A,\rho\otimes\rho]
+\mathrm{Tr}_2[A\otimes A,\rho\otimes\rho]
  =m[A,\rho].
 $$
 

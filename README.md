@@ -18,7 +18,7 @@ The input is an explicit finite list of Pauli Hamiltonian pulses, a known initia
 
 $$
 \dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
-\qquad m(t)=\operatorname{Tr}[A\rho(t)].
+\qquad m(t)=\mathrm{Tr}[A\rho(t)].
 $$
 
 Return one classical estimate of $m(T)$ with additive error $\epsilon$ and failure probability at most $p$. The corresponding occupation is $(1-m(T))/2$. The mean curve is unknown and must be acquired; an intermediate quantum state or a query oracle for that curve is not part of the input.
@@ -69,7 +69,7 @@ with both costs explicitly implemented and bounded there. In particular, $C_{\rm
 | Classical work and storage | Input processing, coefficient transforms, circuit generation, every gate-control instruction and the stored field are included |
 | Output | One classical scalar with specified error and failure probability |
 
-At fixed model parameters and fixed failure probability the resulting precision dependence is $\epsilon^{-1}\operatorname{polylog}(1/\epsilon)$. The dependence on $e^{2\kappa}$, Hamiltonian resources and input size remains explicit. This is an upper bound; no universal classical $\epsilon^{-2}$ lower bound is asserted. At fixed Hilbert-space dimension, deterministic classical integration can have a better precision dependence.
+At fixed model parameters and fixed failure probability the resulting precision dependence is $\epsilon^{-1}\mathrm{polylog}(1/\epsilon)$. The dependence on $e^{2\kappa}$, Hamiltonian resources and input size remains explicit. This is an upper bound; no universal classical $\epsilon^{-2}$ lower bound is asserted. At fixed Hilbert-space dimension, deterministic classical integration can have a better precision dependence.
 
 ## Where classical shortcuts work, and where the obstruction survives
 
@@ -97,13 +97,19 @@ The [hardness proof](science/hardness.md) states the required controls, initial 
 
 ![Exact nonlinear charge probe and its feedback-free comparison](assets/feedback-probe.svg)
 
-For $H=X+2zZ$ starting at the positive $Z$ pole, the exact mean is $z(t)=\operatorname{sech}(2t)$. Removing feedback gives $\cos(2t)$. This observable difference is useful for checking signs, conventions and reconstruction error. **The one-qubit probe itself is analytically tractable.** The hard construction uses it only as an active transducer after the quantum computation. See [the exact solution and its role](science/examples.md).
+For $H=X+2zZ$ starting at the positive $Z$ pole, the exact mean is $z(t)=\mathrm{sech}(2t)$. Removing feedback gives $\cos(2t)$. This observable difference is useful for checking signs, conventions and reconstruction error. **The one-qubit probe itself is analytically tractable.** The hard construction uses it only as an active transducer after the quantum computation. See [the exact solution and its role](science/examples.md).
+
+## Learning route
+
+The educational anchor is Lin Lin's [*Lecture Notes on Quantum Algorithms for Scientific Computation*, arXiv:2201.08309v1 (2022)](https://arxiv.org/abs/2201.08309v1). Start with the [learning entry point](learning/README.md), use the [source-to-project bridge](learning/BRIDGE.md) to connect its preparation, estimation and simulation framework to self-consistent impurity dynamics, and follow the [30-milestone map](learning/MILESTONES.md) for the complete conceptual route.
+
+The map builds from local states and observables to the full algorithm, then integrates the classical boundary, hardness assumptions and meaning of the conditional advantage. The project supplies the nonlinear reconstruction and impurity-specific arguments that are outside the anchor's main scope. Specialist proofs remain in their authoritative science pages.
 
 ## Scientific account and verification
 
 Start with the [scientific reading route](science/README.md), then follow the model, reconstruction proof, implementation costs, classical boundary and hardness argument. The [prior-work comparison](science/prior-work.md) distinguishes the contribution from established spectral self-consistency, quantum fixed-point estimation, nonlinear simulation and impurity universality. The [bibliography](references/REFERENCES.md) links the primary sources.
 
-Four small-state numerical checks exercise noisy interpolation and prefix consistency, including an analytic reference solution. A separate rational-enclosure check verifies the constants in the active-probe corollary. These checks support the implementations and specified finite inequalities; they do not establish hardness or a hardware advantage. Instructions and limitations are in [Verification](science/verification.md).
+Four small-state numerical checks exercise noisy interpolation and prefix consistency, including an analytic reference solution. A separate rational-enclosure check verifies the constants in the active-probe corollary. These checks support the implementations and specified finite inequalities; they do not establish hardness or a hardware advantage. Run commands and requirements are in the [reproduction guide](verification/README.md); the [scientific verification account](science/verification.md) explains the methods, results and limits.
 
 ## Purpose
 

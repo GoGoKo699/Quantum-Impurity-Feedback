@@ -16,6 +16,15 @@
 - [Verification](science/verification.md): Reproducible finite checks and the limits of numerical evidence.
 - [References](references/REFERENCES.md): Primary papers and source locators.
 
+## Routes by reader intention
+
+- Understand the story: read the overview, model and exact example, then connect the reconstruction, complete cost, classical boundary and hardness pages through science/README.md.
+- Study the contribution: start at [Learning](learning/README.md), follow the [Lin-to-project bridge](learning/BRIDGE.md), and use the [30 milestones](learning/MILESTONES.md). The single educational anchor is Lin Lin, Lecture Notes on Quantum Algorithms for Scientific Computation, arXiv:2201.08309v1 (2022). Research references support particular claims; they are not additional educational prerequisites.
+- Check the analytic theorem: use science/spectral-reconstruction.md for its assumptions, exact-response analyticity, noisy real contraction, coefficient error and global physical-prefix guarantee.
+- Audit computational cost: use science/complete-cost.md for finite input, sparse entry circuits, reversible evaluation, simulation, fixed inverse access, classical control work and memory. Retain both the numerical norm-time resources and exp(2*kappa).
+- Challenge a claimed advantage: compare science/classical-boundary.md with science/hardness.md, distinguishing sufficient classical upper bounds, adaptive reductions and the separate direct decision promise.
+- Reproduce finite evidence: follow [Verification commands](verification/README.md), then use science/verification.md to interpret the float diagnostics and exact-rational certificate within their different scopes.
+
 ## Interpretation constraints
 
 The quantum precision result is an upper bound at fixed physical parameters. The complexity obstruction assumes BPP differs from BQP, growing explicit input families, polynomial numerical resources and the stated programmable controls. Every response re-prepares the original state and replays its full prefix. The hard family has active feedback but inherits its computational hardness from the underlying quantum circuit. Large bath size, a nonlinear observable, or a large interaction-action upper bound alone does not establish advantage. No natural-material or fault-tolerant-hardware crossover is claimed.

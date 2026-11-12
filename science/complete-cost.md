@@ -19,7 +19,7 @@ The target is
 $$
 \dot\rho(t)=-i[B_j+\lambda m(t)A,\rho(t)],
 \qquad
-A=Z_a,\qquad m(t)=\operatorname{Tr}(A\rho(t)),
+A=Z_a,\qquad m(t)=\mathrm{Tr}(A\rho(t)),
 $$
 
 with a classical output $\widehat m_T$ satisfying
@@ -255,7 +255,7 @@ The final value of the last stored polynomial at its endpoint supplies the reque
 Substituting $\delta=\epsilon e^{-2\kappa}/(1024L_q)$ into (2) gives the useful abbreviated form
 $$
 G=\frac{e^{2\kappa}}{\epsilon}\,
-\operatorname{poly}\!\left(
+\mathrm{poly}\!\left(
 n,R,K,T\Lambda,\alpha T,
 \kappa,\log(1/\epsilon),B_{\rm in},\log(1/p)
 \right),
@@ -276,7 +276,7 @@ This is not a universal classical lower bound proportional to $\epsilon^{-1}$. A
 
 ## 9. A canonical Carleman representation is not the same resource promise
 
-Vectorize the density matrix as $r=\operatorname{vec}\rho$, and put $a=\operatorname{vec}A$. Up to tensor-factor order, the quadratic term has the canonical flattening
+Vectorize the density matrix as $r=\mathrm{vec}\rho$, and put $a=\mathrm{vec}A$. Up to tensor-factor order, the quadratic term has the canonical flattening
 $$
 \lambda(a^\dagger r)\mathcal L_A r,
 \qquad

@@ -6,11 +6,11 @@ The one-field model is
 
 $$
 \dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
-\qquad m(t)=\operatorname{Tr}(O\rho(t)),
+\qquad m(t)=\mathrm{Tr}(O\rho(t)),
 \qquad \|A\|,\|O\|\leq1.
 $$
 
-The main specialization has a local impurity occupation as both the feedback observable and the coupled operator. The theorem is for an explicitly represented pulse Hamiltonian and a supplied state-preparation circuit. Its precision dependence, at fixed physical parameters, is $\epsilon^{-1}\operatorname{polylog}(1/\epsilon)$. Dependence on integrated feedback strength, Hamiltonian norm, input length, and circuit costs remains explicit. A fixed-size extension of the feedback vector requires corresponding norm and cost bookkeeping; an extensive density field is outside the scalar theorem.
+The main specialization has a local impurity occupation as both the feedback observable and the coupled operator. The theorem is for an explicitly represented pulse Hamiltonian and a supplied state-preparation circuit. Its precision dependence, at fixed physical parameters, is $\epsilon^{-1}\mathrm{polylog}(1/\epsilon)$. Dependence on integrated feedback strength, Hamiltonian norm, input length, and circuit costs remains explicit. A fixed-size extension of the feedback vector requires corresponding norm and cost bookkeeping; an extensive density field is outside the scalar theorem.
 
 ## What is inherited
 
@@ -59,7 +59,7 @@ This is a direct antecedent for combining noisy selfconsistency with inverse-err
 Directly vectorizing the present density equation gives the quadratic coefficient map
 
 $$
-F_2=\lambda\,\mathcal L_A\otimes\operatorname{vec}(O)^\dagger,
+F_2=\lambda\,\mathcal L_A\otimes\mathrm{vec}(O)^\dagger,
 \qquad \mathcal L_A(X)=-i[A,X].
 $$
 
