@@ -50,7 +50,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **States, bounded observables and unitary evolution**
 
 - **Central question:** What mathematical objects determine the mean of a charge measurement at one time?
-- **Understanding target:** Relate a normalized state, a Hermitian Hamiltonian, its unitary propagator and a bounded observable. For an observable with norm one, explain why its expectation lies in $[-1,1]$, while the state itself can require exponentially many classical amplitudes.
+- **Understanding target:** Relate a normalized state, a Hermitian Hamiltonian, its unitary propagator and a bounded observable. For an observable with norm one, explain why its expectation lies in $`[-1,1]`$, while the state itself can require exponentially many classical amplitudes.
 - **Dependencies and story role:** No earlier milestone. This supplies the local objects from which the entire task is assembled.
 - **Conceptual connection:** The algorithm ultimately returns an expectation value. The size of the state representation alone does not determine the difficulty of that output.
 - **Sources:** [Lin §§1.1 and 1.3][lin]; [model, §1](../science/model.md#1-input-evolution-and-output); [bridge, §1](BRIDGE.md#1-a-charge-measurement-with-an-unknown-field).
@@ -70,9 +70,9 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **Fermionic charge and the input state**
 
 - **Central question:** What does the measured qubit represent in the fermionic problem?
-- **Understanding target:** Connect a mode's occupation $n_u=a_u^\dagger a_u$ with the centered observable $A=1-2n_u=Z_u$ after the fixed Jordan–Wigner encoding. Distinguish a readily prepared Fock product input from an unknown interacting equilibrium state, and retain the cost of fermionic strings in later circuits.
+- **Understanding target:** Connect a mode's occupation $`n_u=a_u^\dagger a_u`$ with the centered observable $`A=1-2n_u=Z_u`$ after the fixed Jordan–Wigner encoding. Distinguish a readily prepared Fock product input from an unknown interacting equilibrium state, and retain the cost of fermionic strings in later circuits.
 - **Dependencies and story role:** M01–M02. This identifies the physical observable, its normalization and the actual initial-state access.
-- **Conceptual connection:** The occupation output is $(1-m)/2$. Changing to an uncentered convention also changes the Hamiltonian coefficients; it is not only a relabeling of the final number.
+- **Conceptual connection:** The occupation output is $`(1-m)/2`$. Changing to an uncentered convention also changes the Hamiltonian coefficients; it is not only a relabeling of the final number.
 - **Sources:** [Lin §4.1, Example 4.2, and §1.3][lin] for fermionic encoding and circuits; [model, §§1–2](../science/model.md#1-input-evolution-and-output). The ground-state estimation task surrounding Lin's example is separate from this transient-response task.
 
 ### M04
@@ -100,9 +100,9 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **One classical number, two error parameters**
 
 - **Central question:** What exactly counts as a successful output?
-- **Understanding target:** Read the guarantee $\Pr(|\widehat m_T-m(T)|\le\epsilon)\ge1-p$ as a scalar approximation with additive error $\epsilon$ and failure probability $p$. Separate these from the nodal additive allowance $\delta$, and from producing a quantum state without its requested readout.
+- **Understanding target:** Read the guarantee $`\Pr(|\widehat m_T-m(T)|\le\epsilon)\ge1-p`$ as a scalar approximation with additive error $`\epsilon`$ and failure probability $`p`$. Separate these from the nodal additive allowance $`\delta`$, and from producing a quantum state without its requested readout.
 - **Dependencies and story role:** M02 and M05. This fixes the output contract before introducing its estimation algorithm.
-- **Conceptual connection:** An accuracy guarantee and a confidence guarantee have different roles and costs. The bridge also translates Lin's use of $\delta$ for a failure probability in amplitude estimation; it is not the project's nodal $\delta$.
+- **Conceptual connection:** An accuracy guarantee and a confidence guarantee have different roles and costs. The bridge also translates Lin's use of $`\delta`$ for a failure probability in amplitude estimation; it is not the project's nodal $`\delta`$.
 - **Sources:** [Lin §§1.5 and 4.2][lin]; [model, §1](../science/model.md#1-input-evolution-and-output); [bridge, §2](BRIDGE.md#2-notation-and-access-translation).
 
 ### M07
@@ -160,7 +160,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **The Hartree closure and the retained quantum problem**
 
 - **Central question:** Which correlations does this mean-field approximation discard, and which does it retain?
-- **Understanding target:** Derive the meaning of $H(t)=B(t)+\lambda m(t)A$ with $m(t)=\mathrm{Tr}(A\rho(t))$. In the array motivation, the product closure is between correlated impurity–bath units; it does not factor the impurity from its own bath. The computational theorem solves the resulting closed equation.
+- **Understanding target:** Derive the meaning of $`H(t)=B(t)+\lambda m(t)A`$ with $`m(t)=\mathrm{Tr}(A\rho(t))`$. In the array motivation, the product closure is between correlated impurity–bath units; it does not factor the impurity from its own bath. The computational theorem solves the resulting closed equation.
 - **Dependencies and story role:** M02, M04 and M11. This identifies the nonlinear model that the algorithm must solve, rather than assuming its mean is supplied.
 - **Conceptual connection:** A prescribed-field quantum response can be a subroutine inside self-consistency. Error relative to a finite physical array is a separate modeling question, not part of the algorithmic tolerance.
 - **Sources:** [Lin §§1.2 and 1.6][lin] for state and propagation foundations; [model, §4](../science/model.md#4-why-this-is-a-mean-field-response-problem); [bridge, §1](BRIDGE.md#1-a-charge-measurement-with-an-unknown-field).
@@ -180,9 +180,9 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **The full task and the two actions**
 
 - **Central question:** What must a meaningful quantum–classical comparison hold fixed, vary and output?
-- **Understanding target:** Assemble the explicit input, known initial preparation, unknown feedback curve and final scalar guarantee. Distinguish feedback action $\kappa=\lambda T$ from non-Gaussian impurity action $S$, and distinguish a quantum upper bound, a classical algorithm and a conditional hardness statement.
+- **Understanding target:** Assemble the explicit input, known initial preparation, unknown feedback curve and final scalar guarantee. Distinguish feedback action $`\kappa=\lambda T`$ from non-Gaussian impurity action $`S`$, and distinguish a quantum upper bound, a classical algorithm and a conditional hardness statement.
 - **Dependencies and story role:** M04, M07–M08 and M10–M13. This integrates the background into the exact problem the narrative phase addresses.
-- **Conceptual connection:** Small $\kappa$ controls the cost of stable feedback acquisition; small $S$ can permit a classical shortcut. Efficient quantum readout at fixed parameters does not by itself give an asymptotic separation from all classical methods.
+- **Conceptual connection:** Small $`\kappa`$ controls the cost of stable feedback acquisition; small $`S`$ can permit a classical shortcut. Efficient quantum readout at fixed parameters does not by itself give an asymptotic separation from all classical methods.
 - **Sources:** [Lin §1.10][lin] for resource accounting; [model, §§3–5](../science/model.md#3-two-actions-with-different-roles); [scientific reading route](../science/README.md).
 
 ## Phase II: narrative/innovation
@@ -192,7 +192,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **Analyticity of the exact local mean**
 
 - **Central question:** Why can each exact local mean be approximated exponentially well in polynomial degree?
-- **Understanding target:** Follow the holomorphic density-matrix ODE inside a bounded trace-norm neighborhood of an arbitrary physical panel-start state. Recognize how the bounds on $B$, $A$ and $\lambda$ give a complex-time radius independent of Hilbert-space dimension and a Chebyshev error of order $2^{-q}$ on a sufficiently short panel.
+- **Understanding target:** Follow the holomorphic density-matrix ODE inside a bounded trace-norm neighborhood of an arbitrary physical panel-start state. Recognize how the bounds on $`B`$, $`A`$ and $`\lambda`$ give a complex-time radius independent of Hilbert-space dimension and a Chebyshev error of order $`2^{-q}`$ on a sufficiently short panel.
 - **Dependencies and story role:** M02 and M11–M13. This is the first local ingredient of the reconstruction, before any noisy coefficient acquisition.
 - **Conceptual connection:** Positivity and unit trace at the real initial time provide the physical norm control. No assertion that arbitrary noisy interpolants share the exact solution's analytic bound is needed.
 - **Sources:** [Lin §§1.2 and 1.6][lin] for background; [spectral reconstruction, proof part 1](../science/spectral-reconstruction.md#proof-part-1-physical-existence-and-dimension-independent-analyticity); [bridge, §4](BRIDGE.md#4-reconstructing-one-scalar-curve). The complex-time argument is local to the project.
@@ -202,7 +202,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **A finite collocation map that contracts**
 
 - **Central question:** How is analyticity converted into a stable finite computation?
-- **Understanding target:** Define the prescribed-field response $F_\sigma(p)$ and the finite map $\mathcal I_qF_\sigma(p)$. Combine its real-time Lipschitz bound $2\lambda h$ with the interpolation norm $L_q$ to obtain a contraction when $2\lambda hL_q\le1/2$.
+- **Understanding target:** Define the prescribed-field response $`F_\sigma(p)`$ and the finite map $`\mathcal I_qF_\sigma(p)`$. Combine its real-time Lipschitz bound $`2\lambda h`$ with the interpolation norm $`L_q`$ to obtain a contraction when $`2\lambda hL_q\le1/2`$.
 - **Dependencies and story role:** M11–M13 and M15. This turns the approximation property into an iteration with a well-defined finite fixed point.
 - **Conceptual connection:** Analyticity controls the interpolation defect of the exact physical mean. Real-time unitarity controls the finite map for every admissible real polynomial. Keeping those two arguments separate is what makes noisy acquisition legitimate.
 - **Sources:** [Lin §1.6][lin] for the perturbation tool; [spectral reconstruction, proof part 2](../science/spectral-reconstruction.md#proof-part-2-contraction-uses-only-real-time-unitarity); [bridge, §4](BRIDGE.md#4-reconstructing-one-scalar-curve).
@@ -212,7 +212,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **Measurement error and coefficient error are different**
 
 - **Central question:** What must remain true when the iteration uses noisy numbers and rounded coefficients?
-- **Understanding target:** Track nodal response error $\delta$ through the interpolation factor $L_q$, and track the separate coefficient-map allowance $\beta$ in the real polynomial norm. Explain the roles of clipped reports, bounded stored proxies and contraction in preventing either contribution from accumulating without control.
+- **Understanding target:** Track nodal response error $`\delta`$ through the interpolation factor $`L_q`$, and track the separate coefficient-map allowance $`\beta`$ in the real polynomial norm. Explain the roles of clipped reports, bounded stored proxies and contraction in preventing either contribution from accumulating without control.
 - **Dependencies and story role:** M06, M10 and M15–M16. This supplies the robust finite-data version of the local theorem.
 - **Conceptual connection:** The stored polynomial defines the prescribed Hamiltonian for the next response. Its construction error must not also be charged as if the response oracle were evaluating a different, idealized polynomial.
 - **Sources:** [Lin §§1.8 and 4.2][lin] for finite values and statistical estimation; [spectral reconstruction, proof part 3](../science/spectral-reconstruction.md#proof-part-3-measurement-and-coefficient-errors) and [finite-precision interface](../science/spectral-reconstruction.md#finite-precision-and-the-response-evaluation-interface).
@@ -222,7 +222,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **Physical prefixes and global stability**
 
 - **Central question:** Why do valid local approximations combine into the requested global solution?
-- **Understanding target:** Define each panel-start state as the ideal evolution from the original prepared input under all previously stored proxies. Compare a local exact nonlinear solution from that physical state with the stored panel and then propagate the discrepancy globally, retaining the $e^{2\kappa}$ stability factor and any initial preparation error.
+- **Understanding target:** Define each panel-start state as the ideal evolution from the original prepared input under all previously stored proxies. Compare a local exact nonlinear solution from that physical state with the stored panel and then propagate the discrepancy globally, retaining the $`e^{2\kappa}`$ stability factor and any initial preparation error.
 - **Dependencies and story role:** M05, M11 and M17. This joins the local proof to both a consistent global trajectory and an executable state-access rule.
 - **Conceptual connection:** Every nodal experiment pays to prepare and replay its complete prefix. Neither the proof nor the implementation resets a correlated intermediate state to a simpler state for free.
 - **Sources:** [Lin §§1.4 and 1.6][lin]; [spectral reconstruction, algorithm](../science/spectral-reconstruction.md#algorithm-the-state-at-a-panel-boundary-is-a-paid-prefix) and [proof part 4](../science/spectral-reconstruction.md#proof-part-4-global-error-from-local-physical-prefixes); [bridge, §5](BRIDGE.md#5-the-panel-start-state-is-a-complete-prefix).
@@ -231,8 +231,8 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 
 **Choosing all reconstruction parameters together**
 
-- **Central question:** How does the theorem reach final error $\epsilon$ without a number of time panels proportional to $1/\epsilon$?
-- **Understanding target:** Connect the local tolerance $\eta=\epsilon e^{-2\kappa}/16$ to the degree $q$, iteration count $I$, nodal tolerance $\delta$, coefficient tolerance $\beta$ and panel count $P$. Account for $J=P(q+1)I$ response evaluations and for panel boundaries at supplied pulse changes.
+- **Central question:** How does the theorem reach final error $`\epsilon`$ without a number of time panels proportional to $`1/\epsilon`$?
+- **Understanding target:** Connect the local tolerance $`\eta=\epsilon e^{-2\kappa}/16`$ to the degree $`q`$, iteration count $`I`$, nodal tolerance $`\delta`$, coefficient tolerance $`\beta`$ and panel count $`P`$. Account for $`J=P(q+1)I`$ response evaluations and for panel boundaries at supplied pulse changes.
 - **Dependencies and story role:** M14–M18. This integrates the local analytic, contraction and global-stability ingredients into a finite acquisition plan.
 - **Conceptual connection:** At fixed physical parameters the temporal representation and iteration counts grow only polylogarithmically with inverse accuracy. The theorem preserves an algebraic precision cost for acquiring response values; it does not eliminate that cost.
 - **Sources:** [Lin §§1.8 and 1.10][lin] for precision and accounting background; [spectral reconstruction, theorem](../science/spectral-reconstruction.md#the-reconstruction-theorem); [complete cost, §2](../science/complete-cost.md#2-reconstruction-parameters-and-the-error-interface).
@@ -252,9 +252,9 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **The complete quantum cost statement**
 
 - **Central question:** What remains of the precision improvement after every response and classical operation is priced?
-- **Understanding target:** Combine $J$, the estimation cost proportional to $1/\delta$, the full prefix cost and adaptive confidence amplification. Include input reading, circuit generation, classical gate-control instructions, coefficient storage and endpoint evaluation. Read $G+C_{\rm cl}=\widetilde O(\epsilon^{-1})$ with physical/input parameters and failure probability fixed.
+- **Understanding target:** Combine $`J`$, the estimation cost proportional to $`1/\delta`$, the full prefix cost and adaptive confidence amplification. Include input reading, circuit generation, classical gate-control instructions, coefficient storage and endpoint evaluation. Read $`G+C_{\rm cl}=\widetilde O(\epsilon^{-1})`$ with physical/input parameters and failure probability fixed.
 - **Dependencies and story role:** M08 and M19–M20. This completes the constructive quantum part of the narrative.
-- **Conceptual connection:** For growing instances, $e^{O(\kappa)}$, numerical norm–time products and input resources remain visible. A fixed-parameter precision upper bound is different from a universal classical precision lower bound or a hardware crossover estimate.
+- **Conceptual connection:** For growing instances, $`e^{O(\kappa)}`$, numerical norm–time products and input resources remain visible. A fixed-parameter precision upper bound is different from a universal classical precision lower bound or a hardware crossover estimate.
 - **Sources:** [Lin §1.10 and §4.2][lin]; [complete cost, §§7–9](../science/complete-cost.md#7-end-to-end-resource-theorem); [bridge, §6](BRIDGE.md#6-from-a-response-circuit-to-the-full-cost).
 
 ### M22
@@ -272,7 +272,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **Poisson/Dyson words and Gaussian evaluation**
 
 - **Central question:** How can a genuinely interacting response still be computed classically at bounded interaction action?
-- **Understanding target:** Expand the non-Gaussian impurity evolution around a prescribed Gaussian evolution. Understand why the expectation needs independent forward and backward random words, why their weight is controlled by the action $S$, and how Wick/Pfaffian evaluation reduces each word pair to finite one-body calculations.
+- **Understanding target:** Expand the non-Gaussian impurity evolution around a prescribed Gaussian evolution. Understand why the expectation needs independent forward and backward random words, why their weight is controlled by the action $`S`$, and how Wick/Pfaffian evaluation reduces each word pair to finite one-body calculations.
 - **Dependencies and story role:** M04, M09, M11 and M22. This supplies a constructive comparator beyond exact Gaussian closure.
 - **Conceptual connection:** The classical algorithm expands complete prefixes from the original Gaussian input; it does not assume a later interacting state is Gaussian. Finite word truncation, sampling precision and Gaussian propagation are paid parts of the response cost.
 - **Sources:** [Lin §7.3][lin] for the linear-combination viewpoint, not for this classical estimator; [classical boundary, §§3–6](../science/classical-boundary.md#3-a-prescribed-interacting-response-as-an-expectation-over-words); [bridge, §7](BRIDGE.md#7-the-classical-boundary-uses-two-actions).
@@ -282,9 +282,9 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **Closing and pricing the classical feedback loop**
 
 - **Central question:** When does the response estimator yield a polynomial classical algorithm for the complete nonlinear task?
-- **Understanding target:** Insert the classical nodal estimator into the same robust reconstruction and retain its $e^{4(S+\kappa)}\epsilon^{-2}$ factor, response count and explicitly polynomial word-evaluation cost. Derive the easy regime $S+\kappa=O(\log N)$ when all remaining descriptions, numerical resources and inverse accuracy are polynomially bounded in $N$.
+- **Understanding target:** Insert the classical nodal estimator into the same robust reconstruction and retain its $`e^{4(S+\kappa)}\epsilon^{-2}`$ factor, response count and explicitly polynomial word-evaluation cost. Derive the easy regime $`S+\kappa=O(\log N)`$ when all remaining descriptions, numerical resources and inverse accuracy are polynomially bounded in $`N`$.
 - **Dependencies and story role:** M18–M19 and M23. This completes the full-task classical comparison rather than stopping at one prescribed response.
-- **Conceptual connection:** Growing $S$ can leave this proved easy regime, but an exponential factor in this estimator's upper bound is not a classical lower bound. Other classical algorithms can exploit more structure.
+- **Conceptual connection:** Growing $`S`$ can leave this proved easy regime, but an exponential factor in this estimator's upper bound is not a classical lower bound. Other classical algorithms can exploit more structure.
 - **Sources:** [Lin §1.10][lin] for complexity accounting; [classical boundary, §§7–8](../science/classical-boundary.md#7-closing-the-actual-self-consistent-task); [bridge, §7](BRIDGE.md#7-the-classical-boundary-uses-two-actions).
 
 ### M25
@@ -312,7 +312,7 @@ The single educational anchor is **Lin Lin, [Lecture Notes on Quantum Algorithms
 **An exactly soluble active probe**
 
 - **Central question:** What does a nonzero feedback effect look like when the entire nonlinear response is analytically known?
-- **Understanding target:** Relate the two-mode one-particle problem to $H=(\lambda/2)X+\lambda zZ$ and the solutions $z(t)=\pm\mathrm{sech}(\lambda t)$. Explain how feedback changes the same final charge that is measured, while recognizing that this isolated probe has an elementary classical shortcut.
+- **Understanding target:** Relate the two-mode one-particle problem to $`H=(\lambda/2)X+\lambda zZ`$ and the solutions $`z(t)=\pm\mathrm{sech}(\lambda t)`$. Explain how feedback changes the same final charge that is measured, while recognizing that this isolated probe has an elementary classical shortcut.
 - **Dependencies and story role:** M01–M02 and M11–M12. This supplies a concrete nonlinear mechanism before attaching it to a hard computation.
 - **Conceptual connection:** Observable nonlinear activity and computational difficulty are different properties. The probe can certify the former and transmit a computational signal without itself accounting for the latter.
 - **Sources:** [Lin §§1.1–1.2][lin] for the two-level state language; [examples, §§1–2](../science/examples.md#1-derivation-of-the-critical-probe); [hardness, §5](../science/hardness.md#5-a-nonlinear-probe-with-an-exact-response); [bridge, §3](BRIDGE.md#3-a-complete-two-mode-example).

@@ -4,7 +4,7 @@
     {
       "path": "README.md",
       "index": 6,
-      "source_sha256": "ee43aba4312752d63b446b3533bd0ecd331c0b61a0fc54588d2bafa138ae6798",
+      "source_sha256": "a5707839779e3c3ba73821a775c1156617b9ba26187d3bd243da17507bc36a29",
       "required_text": [
         "B(t)+λm(t)A",
         "m(t)=Tr",
@@ -14,7 +14,7 @@
     {
       "path": "science/complete-cost.md",
       "index": 154,
-      "source_sha256": "40c26b7e7fd0d057794624382f0ab9799b3049179747de4d136b003edde4660e",
+      "source_sha256": "6633cf7d08079b8aaa71f2fee758dad0df345541fce0a93c38bc45db11dd73bd",
       "required_text": [
         "G+Ccl",
         "ε−1"
@@ -23,7 +23,7 @@
     {
       "path": "science/spectral-reconstruction.md",
       "index": 57,
-      "source_sha256": "e82d12efbb154af9411257d70caef76467a5f6fc7a25036d1a9c7459457a0bde",
+      "source_sha256": "5b38f621db4f161178ccea6a2826a4f8c632513651b281f08372b8e3f9b59687",
       "required_text": [
         "e2λtζ+η",
         "(e2λt−1)",
@@ -33,7 +33,7 @@
     {
       "path": "science/classical-boundary.md",
       "index": 221,
-      "source_sha256": "c96bdbe01ad05aa04b7ced9c2aa9a87c49d8ac1c39fd56deb4d95a49fc946410",
+      "source_sha256": "2c98391d7fe790431f2929c43cbfd999c3bd212059e95a117d25eefb27046f63",
       "required_text": [
         "S+κ=O(logN)",
         "(49)"
@@ -42,7 +42,7 @@
     {
       "path": "science/hardness.md",
       "index": 128,
-      "source_sha256": "c9c907ead89104567dd75d8c1b071e1cb020f908a6112db369f6c59dd5c0537e",
+      "source_sha256": "eca8479174312868806c4e369dbb2354a16bee26c138e6bad3b6ffe624527c35",
       "required_text": [
         "YES:m(1)≥1/2",
         "NO:m(1)≤−1/2"
@@ -51,7 +51,7 @@
     {
       "path": "science/hardness.md",
       "index": 155,
-      "source_sha256": "57a1f0dd3676270b2aea412b8042b36319022f0da3f3952ea087da3b60039b22",
+      "source_sha256": "628c9563b9f311e83b35172f5f269c7202f07d77f833002395e5b2781fcf5f54",
       "required_text": [
         "sech(τp)−cos(τp)",
         "(e2τp+1)d0",
@@ -62,7 +62,7 @@
     {
       "path": "science/verification.md",
       "index": 54,
-      "source_sha256": "4dfcc1448f8bb92fbe280ea0264286c806c6f7f6578847324db28293deaa7412",
+      "source_sha256": "dc4148c6efcce16a66687a490a57165d5e6e01adbf90021ea8f2ab1802278480",
       "required_text": [
         "S−−E+d0>58",
         "S−−C+−(E++1)d0>225=0.08"
@@ -71,7 +71,7 @@
     {
       "path": "learning/BRIDGE.md",
       "index": 4,
-      "source_sha256": "a61f424d7dd90e99e120ff862ec3e9c72a0659a348171b1bb308f5a23ceda7e1",
+      "source_sha256": "466b29c84d82d912bb8e133f3bf5efc5bc47145597199e7b6f3007cccd670108",
       "required_text": [
         "A=1−2nu=Zu"
       ]
@@ -79,7 +79,7 @@
     {
       "path": "learning/BRIDGE.md",
       "index": 54,
-      "source_sha256": "95a4c729f84ce7242c017c6bea11ac5643381559417e923228ec3c09de899178",
+      "source_sha256": "9ab78db043a8f3e66dede4513ece1dc2313e194d1b94ca963426529f2eee3961",
       "required_text": [
         "0⟩L=",
         "0u1v⟩",
@@ -90,7 +90,7 @@
     {
       "path": "learning/BRIDGE.md",
       "index": 65,
-      "source_sha256": "1b84bc85c9d850bae37cef9449bf6e16b4b0ab6b6d3378c1d7b7a65134fe221d",
+      "source_sha256": "1deff8a600558da49deeb5caad7777e33b511a60026ce7103377d169fe5caf4c",
       "required_text": [
         "z(1)≈0.648054",
         "nu(1)",
