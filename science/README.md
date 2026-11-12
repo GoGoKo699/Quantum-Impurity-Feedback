@@ -18,11 +18,11 @@ Each panel begins with the ideal state produced by the already stored prefix. A 
 
 [Complete cost](complete-cost.md) turns the reconstruction interface into a logical quantum circuit algorithm. It constructs finite coefficient arithmetic and sparse-matrix access, invokes a specified time-dependent simulator, synthesizes a fixed gate set and uses the actual compiled circuit and its inverse for amplitude estimation. Classical circuit generation, gate-control work and field storage are included.
 
-The inverse-linear precision power is an upper bound at fixed physical parameters. The explicit dependence on feedback action, norms, time, input length and replay counts determines whether an instance family is polynomially solvable.
+The inverse-linear precision power is an upper bound at fixed physical parameters and fixed failure probability. The explicit dependence on feedback action, norms, time, input length and replay counts determines whether an instance family is polynomially solvable.
 
 ## 4. Challenge the advantage with a classical algorithm
 
-[Classical boundary](classical-boundary.md) begins with the exact Gaussian and trivial-state shortcuts. It then constructs a two-branch Poisson/Dyson estimator from the original Gaussian state, evaluates its words by Wick/Pfaffian methods, and pays for finite sampling and one-body propagation. Applying the same feedback reconstruction proves a full-task classical algorithm when interaction and feedback actions are logarithmic in input size.
+[Classical boundary](classical-boundary.md) begins with the exact Gaussian and trivial-state shortcuts. It then constructs a two-branch Poisson/Dyson estimator from the original Gaussian state, evaluates its words by Wick/Pfaffian methods, and pays for finite sampling and one-body propagation. Applying the same feedback reconstruction proves a full-task classical algorithm when $S+\kappa=O(\log N)$, provided the remaining descriptions, norm–time resources, numerical bit lengths, and $1/\epsilon$ are polynomially bounded in $N$.
 
 The independent forward and backward words are essential. Resetting a correlated intermediate state to a Gaussian state, or counting only a single branch, would give a different and generally incorrect algorithm.
 

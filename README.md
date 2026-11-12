@@ -6,7 +6,7 @@ Consider an interacting quantum impurity and its bath, driven by a local field t
 
 This repository develops three linked results:
 
-1. **A finite-input quantum algorithm.** A noisy spectral reconstruction of a fixed number of expectation fields has a fully implemented logical-gate cost with inverse-linear accuracy dependence, up to logarithms, at fixed physical parameters. Every response experiment prepares the initial state and replays its complete evolution prefix.
+1. **A finite-input quantum algorithm.** A noisy spectral reconstruction of the scalar charge field has a fully implemented logical-gate cost with inverse-linear accuracy dependence, up to logarithms, at fixed physical parameters and fixed failure probability. Every response experiment prepares the initial state and replays its complete evolution prefix. The reconstruction extends to a fixed number of bounded fields when their Hamiltonian and measurement implementations are explicitly supplied and charged.
 2. **A substantial classical easy regime.** A quadratic bath with a fixed impurity and a Gaussian initial state admits an explicit Poisson/Dyson/Wick estimator. When the non-Gaussian interaction action and feedback action are logarithmic in input size, and the remaining resources are polynomially bounded, the entire feedback task is classically polynomial.
 3. **A restricted hard family beyond that regime.** Explicitly programmable two-mode impurity dynamics retains a conditional complexity obstruction at nonzero feedback action. A source-free construction has a direct BQP-complete constant-gap decision problem, and its final feedback stage changes the same measured mean by more than $0.08$.
 
@@ -69,7 +69,7 @@ with both costs explicitly implemented and bounded there. In particular, $C_{\rm
 | Classical work and storage | Input processing, coefficient transforms, circuit generation, every gate-control instruction and the stored field are included |
 | Output | One classical scalar with specified error and failure probability |
 
-At fixed model parameters the resulting precision dependence is $\epsilon^{-1}\operatorname{polylog}(1/\epsilon)$. The dependence on $e^{2\kappa}$, Hamiltonian resources and input size remains explicit. This is an upper bound; no universal classical $\epsilon^{-2}$ lower bound is asserted. At fixed Hilbert-space dimension, deterministic classical integration can have a better precision dependence.
+At fixed model parameters and fixed failure probability the resulting precision dependence is $\epsilon^{-1}\operatorname{polylog}(1/\epsilon)$. The dependence on $e^{2\kappa}$, Hamiltonian resources and input size remains explicit. This is an upper bound; no universal classical $\epsilon^{-2}$ lower bound is asserted. At fixed Hilbert-space dimension, deterministic classical integration can have a better precision dependence.
 
 ## Where classical shortcuts work, and where the obstruction survives
 
