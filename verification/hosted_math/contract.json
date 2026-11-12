@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "expressions": [
+    {
+      "path": "README.md",
+      "index": 6,
+      "source_sha256": "a5707839779e3c3ba73821a775c1156617b9ba26187d3bd243da17507bc36a29",
+      "required_text": [
+        "B(t)+λm(t)A",
+        "m(t)=Tr",
+        "Aρ(t)"
+      ]
+    },
+    {
+      "path": "science/complete-cost.md",
+      "index": 154,
+      "source_sha256": "6633cf7d08079b8aaa71f2fee758dad0df345541fce0a93c38bc45db11dd73bd",
+      "required_text": [
+        "G+Ccl",
+        "ε−1"
+      ]
+    },
+    {
+      "path": "science/spectral-reconstruction.md",
+      "index": 57,
+      "source_sha256": "0d911980243b2016afff712d11343c0d8f85ecaff0a2956a075718b2149d19a7",
+      "required_text": [
+        "e2λtζ+η",
+        "(e2λt−1)",
+        "(11)"
+      ]
+    },
+    {
+      "path": "science/classical-boundary.md",
+      "index": 221,
+      "source_sha256": "0846bfc2196fca12e87e8886d8abb6efeda4d241d56685dcf122c3caa1e53d35",
+      "required_text": [
+        "S+κ=O(logN)",
+        "(49)"
+      ]
+    },
+    {
+      "path": "science/hardness.md",
+      "index": 128,
+      "source_sha256": "eca8479174312868806c4e369dbb2354a16bee26c138e6bad3b6ffe624527c35",
+      "required_text": [
+        "YES:m(1)≥1/2",
+        "NO:m(1)≤−1/2"
+      ]
+    },
+    {
+      "path": "science/hardness.md",
+      "index": 155,
+      "source_sha256": "57a4dbd1a91372d47dedd31d01267a2946172ede63c8bc369df5cc9eebb665bc",
+      "required_text": [
+        "sech(τp)−cos(τp)",
+        "(e2τp+1)d0",
+        ">0.08",
+        "(9)"
+      ]
+    },
+    {
+      "path": "science/verification.md",
+      "index": 54,
+      "source_sha256": "dc4148c6efcce16a66687a490a57165d5e6e01adbf90021ea8f2ab1802278480",
+      "required_text": [
+        "S−−E+d0>58",
+        "S−−C+−(E++1)d0>225=0.08"
+      ]
+    },
+    {
+      "path": "learning/BRIDGE.md",
+      "index": 4,
+      "source_sha256": "466b29c84d82d912bb8e133f3bf5efc5bc47145597199e7b6f3007cccd670108",
+      "required_text": [
+        "A=1−2nu=Zu"
+      ]
+    },
+    {
+      "path": "learning/BRIDGE.md",
+      "index": 54,
+      "source_sha256": "9ab78db043a8f3e66dede4513ece1dc2313e194d1b94ca963426529f2eee3961",
+      "required_text": [
+        "0⟩L=",
+        "0u1v⟩",
+        "1⟩L=",
+        "1u0v⟩"
+      ]
+    },
+    {
+      "path": "learning/BRIDGE.md",
+      "index": 65,
+      "source_sha256": "1deff8a600558da49deeb5caad7777e33b511a60026ce7103377d169fe5caf4c",
+      "required_text": [
+        "z(1)≈0.648054",
+        "nu(1)",
+        "1−z(1)2",
+        "≈0.175973"
+      ]
+    }
+  ]
+}

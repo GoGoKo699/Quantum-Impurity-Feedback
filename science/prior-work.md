@@ -4,13 +4,13 @@ This research account establishes a complete computational guarantee for a restr
 
 The one-field model is
 
-$$
+```math
 \dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
-\qquad m(t)=\operatorname{Tr}(O\rho(t)),
+\qquad m(t)=\mathrm{Tr}(O\rho(t)),
 \qquad \|A\|,\|O\|\leq1.
-$$
+```
 
-The main specialization has a local impurity occupation as both the feedback observable and the coupled operator. The theorem is for an explicitly represented pulse Hamiltonian and a supplied state-preparation circuit. Its precision dependence, at fixed physical parameters, is $\epsilon^{-1}\operatorname{polylog}(1/\epsilon)$. Dependence on integrated feedback strength, Hamiltonian norm, input length, and circuit costs remains explicit. A fixed-size extension of the feedback vector requires corresponding norm and cost bookkeeping; an extensive density field is outside the scalar theorem.
+The main specialization has a local impurity occupation as both the feedback observable and the coupled operator. The theorem is for an explicitly represented pulse Hamiltonian and a supplied state-preparation circuit. Its precision dependence, at fixed physical parameters, is $`\mathstrut \epsilon^{-1}\mathrm{polylog}(1/\epsilon)`$. Dependence on integrated feedback strength, Hamiltonian norm, input length, and circuit costs remains explicit. A fixed-size extension of the feedback vector requires corresponding norm and cost bookkeeping; an extensive density field is outside the scalar theorem.
 
 ## What is inherited
 
@@ -29,24 +29,24 @@ The main specialization has a local impurity occupation as both the feedback obs
 
 [Baer](../references/REFERENCES.md#baer2000), Section II, writes nonlinear Schrödinger evolution as an integral equation, samples it at Chebyshev nodes, and solves the resulting implicit equations by iteration. Equations (20)–(22) give the sampled equations, iteration, and continuous reconstruction. The method stores full classical state vectors at the nodes and measures work in Hamiltonian applications. Its use of short intervals to obtain convergence directly anticipates the numerical architecture relevant here.
 
-[Tal-Ezer, Kosloff, and Schaefer](../references/REFERENCES.md#tal-ezer2012) and the more extensive [2017 analysis](../references/REFERENCES.md#schaefer2017) develop semiglobal propagation of time-dependent and nonlinear equations. The latter explicitly considers a generator of the form $G_0+\sum_j\xi_j(u,t)G_j$ in Section 3.3, equations (92)–(95). Appendix D separates iteration, time interpolation, matrix-function, and accumulated errors. This is closer prior work than a generic reference to spectral methods.
+[Tal-Ezer, Kosloff, and Schaefer](../references/REFERENCES.md#tal-ezer2012) and the more extensive [2017 analysis](../references/REFERENCES.md#schaefer2017) develop semiglobal propagation of time-dependent and nonlinear equations. The latter explicitly considers a generator of the form $`\mathstrut G_0+\sum_j\xi_j(u,t)G_j`$ in Section 3.3, equations (92)–(95). Appendix D separates iteration, time interpolation, matrix-function, and accumulated errors. This is closer prior work than a generic reference to spectral methods.
 
 Those methods manipulate the evolving state as a classical vector. Substituting a quantum state for that vector does not implement the vector arithmetic or nonlinear iteration at its stated cost. The present construction instead interpolates a scalar response, obtains its values through unitary evolution and measurement, and proves the resulting noisy fixed-point and gate-cost bounds. The numerical approximation ideas remain inherited.
 
 ## The closest dynamic quantum predecessor
 
-The published version of [Andress et al.](../references/REFERENCES.md#andress2025), Sections 2.2 and 2.10, uses Hamiltonian–observable pairs and freezes measured expectations during a short step. It explicitly stores the estimated history and replays evolution from the initial state because measured copies cannot be reused. For $M$ pairs, $m$ copies, step $\Delta t$, and horizon $T$, it counts $O(MmT/\Delta t)$ measurements and $O(MmT^2/\Delta t^2)$ evolution steps, before their individual implementation costs.
+The published version of [Andress et al.](../references/REFERENCES.md#andress2025), Sections 2.2 and 2.10, uses Hamiltonian–observable pairs and freezes measured expectations during a short step. It explicitly stores the estimated history and replays evolution from the initial state because measured copies cannot be reused. For $`\mathstrut M`$ pairs, $`\mathstrut m`$ copies, step $`\mathstrut \Delta t`$, and horizon $`\mathstrut T`$, it counts $`\mathstrut O(MmT/\Delta t)`$ measurements and $`\mathstrut O(MmT^2/\Delta t^2)`$ evolution steps, before their individual implementation costs.
 
-The journal's discussion of the required $m$ is system dependent, includes a numerical ensemble-error scaling, and mentions a possible improvement from amplitude amplification. The arXiv version's Section 2.8 is more explicit about inverse-error estimation. Neither version supplies the complete spectral error-to-gate-cost guarantee used here. The [complete-cost theorem](complete-cost.md) removes the accuracy-driven time-mesh penalty under its stated input assumptions, with all replays retained in the accounting. Measured feedback and amplitude estimation remain inherited ingredients.
+The journal's discussion of the required $`\mathstrut m`$ is system dependent, includes a numerical ensemble-error scaling, and mentions a possible improvement from amplitude amplification. The arXiv version's Section 2.8 is more explicit about inverse-error estimation. Neither version supplies the complete spectral error-to-gate-cost guarantee used here. The [complete-cost theorem](complete-cost.md) removes the accuracy-driven time-mesh penalty under its stated input assumptions, with all replays retained in the accounting. Measured feedback and amplitude estimation remain inherited ingredients.
 
 ## Noisy quantum fixed points already have inverse-error guarantees
 
 [Ko, Li, and Wang](../references/REFERENCES.md#ko2023) study a stochastic selfconsistent density-functional calculation. Their Theorem 17 gives
 
-$$
+```math
 O\!\left(\frac{sN_I}{\epsilon}
 \log\frac1\epsilon\log\frac1\delta\right)
-$$
+```
 
 Hamiltonian-oracle queries for the full-coordinate fixed-point method, with the theorem's additional probability term for the initial neighborhood. The result assumes an appropriate local contraction and a sufficiently close initial density; quantum singular-value transformation and amplitude estimation implement the density update.
 
@@ -54,20 +54,20 @@ This is a direct antecedent for combining noisy selfconsistency with inverse-err
 
 ## General nonlinear algorithms and normalization
 
-[Brüstle and Wiebe](../references/REFERENCES.md#brustle2025) give quantum and classical algorithms for nonlinear unitary dynamics. Their Corollary 13 already combines state preparation, its inverse, and expectation estimation to obtain inverse-$\epsilon$ output precision, up to logarithms and their coefficient-norm parameters. General polynomial systems can be transformed into their quadratic form.
+[Brüstle and Wiebe](../references/REFERENCES.md#brustle2025) give quantum and classical algorithms for nonlinear unitary dynamics. Their Corollary 13 already combines state preparation, its inverse, and expectation estimation to obtain an output estimate at cost proportional to $`\mathstrut 1/\epsilon`$, up to logarithms and their coefficient-norm parameters. General polynomial systems can be transformed into their quadratic form.
 
 Directly vectorizing the present density equation gives the quadratic coefficient map
 
-$$
-F_2=\lambda\,\mathcal L_A\otimes\operatorname{vec}(O)^\dagger,
+```math
+F_2=\lambda\,\mathcal L_A\otimes\mathrm{vec}(O)^\dagger,
 \qquad \mathcal L_A(X)=-i[A,X].
-$$
+```
 
-For a local Pauli $A=O$ acting on dimension $D$, its Euclidean operator norm is $2|\lambda|\sqrt D$, although both physical operators have norm one. Thus that direct application of the general theorem does not establish a bound polynomial in the number of qubits. The scalar-response construction uses the physical operator norms instead.
+For a local Pauli $`\mathstrut A=O`$ acting on dimension $`\mathstrut D`$, its Euclidean operator norm is $`\mathstrut 2|\lambda|\sqrt D`$, although both physical operators have norm one. Thus that direct application of the general theorem does not establish a bound polynomial in the number of qubits. The scalar-response construction uses the physical operator norms instead.
 
 This is an obstruction to a particular flattening, not a lower bound against every Carleman representation, rescaling, or structured embedding. A different representation must be assessed with its own preparation, normalization, sparsity, and readout costs.
 
-[Jennings et al.](../references/REFERENCES.md#jennings2026) substantially strengthen Carleman analysis. Theorems 6.1–6.3 involve nonresonance, transformed nonlinear-coefficient norms and sparsity, and costs containing $2^k\kappa_Q^k$, with $k$ logarithmic in inverse precision. Theorem 6.4 has better precision behavior under Lyapunov-transform access and the stability assumptions of Theorem 3.6. The conservation-law extension in Section 4 also constrains nonlinear coupling into marginal modes and retains a spectral-gap condition. Conservation alone is not its sufficient hypothesis.
+[Jennings et al.](../references/REFERENCES.md#jennings2026) substantially strengthen Carleman analysis. Theorems 6.1–6.3 involve nonresonance, transformed nonlinear-coefficient norms and sparsity, and costs containing $`\mathstrut 2^k\kappa_Q^k`$, with $`\mathstrut k`$ logarithmic in inverse precision. Theorem 6.4 has better precision behavior under Lyapunov-transform access and the stability assumptions of Theorem 3.6. The conservation-law extension in Section 4 also constrains nonlinear coupling into marginal modes and retains a spectral-gap condition. Conservation alone is not its sufficient hypothesis.
 
 These results do not directly give the arbitrary bounded-observable feedback guarantee above, and the canonical flattening retains its normalization cost. They also do not exclude a more effective structured embedding. Their nonlinear Schrödinger complexity results preclude claiming that nonlinear quantum hardness itself is new here.
 
@@ -75,7 +75,7 @@ These results do not directly give the arbitrary bounded-observable feedback gua
 
 [Lloyd et al.](../references/REFERENCES.md#lloyd2020) realize nonlinear evolution through symmetrized interactions among copies and a mean-field limit. Such interactions can have small physical operator norm even when a flattened polynomial coefficient matrix does not. Their analysis includes finite-copy and discretization errors. This is an important alternative to measured feedback; the present result does not establish a separation from every refined many-copy implementation. The specific complete scalar precision bound claimed here was not identified in that construction.
 
-[Liu and Lin](../references/REFERENCES.md#liu2024) analyze time-accumulated observables for prescribed quantum dynamics, including near-$T/\epsilon$ complexity for certain low-rank outputs. Their output variable does not in general feed back into the Hamiltonian. Adding an unknown selfconsistent field therefore needs a separate analysis, while their work supplies relevant precedent for pricing the observable rather than stopping at a prepared state.
+[Liu and Lin](../references/REFERENCES.md#liu2024) analyze time-accumulated observables for prescribed quantum dynamics, including complexity near $`\mathstrut T/\epsilon`$ for certain low-rank outputs. Their output variable does not in general feed back into the Hamiltonian. Adding an unknown selfconsistent field therefore needs a separate analysis, while their work supplies relevant precedent for pricing the observable rather than stopping at a prepared state.
 
 ## Impurity physics and the classical comparison
 
@@ -98,6 +98,6 @@ The proved interface connects a scalar numerical solver to actual quantum circui
 3. Every response query is reconstructed from the original supplied state and the recorded earlier field. The inverse required for amplitude estimation is the inverse of this compiled circuit.
 4. Polynomial coefficients, finite-precision arithmetic, time-dependent simulation, query failure probabilities, and final scalar extraction are charged explicitly. No coherent random-access memory or unknown field oracle is supplied without cost.
 
-The resulting statement is a composition theorem for a physically structured output task. It permits high precision without a power-law time-mesh penalty and combines with a restricted interacting-impurity hardness construction. It does not establish the first spectral selfconsistent algorithm, the first quantum mean-field algorithm, a universal $1/\epsilon$ lower bound for explicitly described inputs, or an observed advantage on present hardware.
+The resulting statement is a composition theorem for a physically structured output task. It permits high precision without a power-law time-mesh penalty and combines with a restricted interacting-impurity hardness construction. It does not establish the first spectral selfconsistent algorithm, the first quantum mean-field algorithm, a universal $`\mathstrut 1/\epsilon`$ lower bound for explicitly described inputs, or an observed advantage on present hardware.
 
 The primary-source comparison above supports a narrow gap in existing guarantees, not proof that no unpublished or differently encoded algorithm can subsume it. Novelty and significance should be judged on the explicit theorem and task consequence, with the inherited ingredients credited.

@@ -4,7 +4,7 @@ The central question is whether a classical scalar can be extracted efficiently 
 
 ## 1. Define the output before comparing algorithms
 
-[Model](model.md) specifies the finite pulse input, initial preparation, local mean, final error and failure probability. It separates the feedback action $\kappa$ from the impurity interaction action $S$, and explains the Hartree interpretation. The computational target is the closed equation itself.
+[Model](model.md) specifies the finite pulse input, initial preparation, local mean, final error and failure probability. It separates the feedback action $`\mathstrut \kappa`$ from the impurity interaction action $`\mathstrut S`$, and explains the Hartree interpretation. The computational target is the closed equation itself.
 
 [Examples](examples.md) derives the exact hyperbolic-secant probe. Its analytic solution supplies a useful correctness check and makes clear why an observable nonlinear effect alone cannot establish computational advantage.
 
@@ -22,7 +22,7 @@ The inverse-linear precision power is an upper bound at fixed physical parameter
 
 ## 4. Challenge the advantage with a classical algorithm
 
-[Classical boundary](classical-boundary.md) begins with the exact Gaussian and trivial-state shortcuts. It then constructs a two-branch Poisson/Dyson estimator from the original Gaussian state, evaluates its words by Wick/Pfaffian methods, and pays for finite sampling and one-body propagation. Applying the same feedback reconstruction proves a full-task classical algorithm when $S+\kappa=O(\log N)$, provided the remaining descriptions, norm–time resources, numerical bit lengths, and $1/\epsilon$ are polynomially bounded in $N$.
+[Classical boundary](classical-boundary.md) begins with the exact Gaussian and trivial-state shortcuts. It then constructs a two-branch Poisson/Dyson estimator from the original Gaussian state, evaluates its words by Wick/Pfaffian methods, and pays for finite sampling and one-body propagation. Applying the same feedback reconstruction proves a full-task classical algorithm when $`\mathstrut S+\kappa=O(\log N)`$, provided the remaining descriptions, norm–time resources, numerical bit lengths, and $`\mathstrut 1/\epsilon`$ are polynomially bounded in $`\mathstrut N`$.
 
 The independent forward and backward words are essential. Resetting a correlated intermediate state to a Gaussian state, or counting only a single branch, would give a different and generally incorrect algorithm.
 
@@ -37,3 +37,7 @@ These are worst-case statements for explicitly programmable families. The hard c
 [Prior work](prior-work.md) compares the construction with spectral self-consistent propagation, noisy quantum fixed points, expectation-valued Hamiltonians, Carleman methods, many-copy mean-field simulation and quantum impurity solvers. The contribution is the stated composition with physical norm bounds and a finite complete cost account, together with the classical boundary and qualified hard-family consequences.
 
 [Verification](verification.md) describes the reproducible small-state checks, the exact-probe inequality check and their limits. [References](../references/REFERENCES.md) gives the primary source record. These sources and checks support different parts of the argument; the numerical examples are not evidence of asymptotic quantum advantage.
+
+## Learning and reproduction routes
+
+For a guided conceptual route, the [learning entry point](../learning/README.md), [Lin-to-project bridge](../learning/BRIDGE.md) and [30 milestones](../learning/MILESTONES.md) connect the anchor's quantum-algorithm foundations to these proofs. The [reproduction guide](../verification/README.md) gives executable commands, dependencies and expected finite results. These routes point back to the same canonical model and theorem statements.

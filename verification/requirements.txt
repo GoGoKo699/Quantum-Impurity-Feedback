@@ -1,0 +1,6 @@
+# Direct dependencies for the recorded spectral diagnostics.
+numpy==2.3.5
+scipy==1.17.0
+
+# Optional figure from the analytical probe functions.
+matplotlib==3.10.8
