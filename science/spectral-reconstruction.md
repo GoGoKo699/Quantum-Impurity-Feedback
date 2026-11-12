@@ -12,27 +12,37 @@ Let $`\mathcal H`$ be a finite-dimensional Hilbert space. Write $`\|X\|`$ for op
 
 The input specifies:
 
-- A time $`T>0`$ and $`K`$ nonempty pulse intervals with supplied boundaries
-  ```math
-  0=\tau_0<\tau_1<\cdots<\tau_K=T.
-  ```
-- A Hermitian Hamiltonian $`B(t)=B_j`$ on each interval, with a certified bound
-  ```math
-  \max_j\|B_j\|\le \Lambda.
-  ```
-  A finite Pauli coefficient sum bound may be used for $`\Lambda`$. A supplied scalar source multiplying a fixed observable can be absorbed into $`B`$.
-- Fixed Hermitian operators $`A,O`$ with $`\|A\|,\|O\|\le1`$, a real coupling $`\lambda\ge0`$, and an initial density matrix $`\rho_0`$ with an explicit preparation procedure.
+**Time partition.** A time $`T>0`$ and $`K`$ nonempty pulse intervals with supplied boundaries
+
+```math
+0=\tau_0<\tau_1<\cdots<\tau_K=T.
+```
+
+
+**Hamiltonian pulses.** A Hermitian Hamiltonian $`B(t)=B_j`$ on each interval, with a certified bound
+
+```math
+\max_j\|B_j\|\le \Lambda.
+```
+
+A finite Pauli coefficient sum bound may be used for $`\Lambda`$. A supplied scalar source multiplying a fixed observable can be absorbed into $`B`$.
+
+**Observables and state.** Fixed Hermitian operators $`A,O`$ with $`\|A\|,\|O\|\le1`$, a real coupling $`\lambda\ge0`$, and an initial density matrix $`\rho_0`$ with an explicit preparation procedure.
 
 The target equation is
 ```math
-\dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
+\begin{aligned}
+&\dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
 \qquad
 m(t)=\mathrm{Tr}(O\rho(t)),
+\end{aligned}
 \tag{1}
 ```
 and the feedback action is
 ```math
-\kappa=\lambda T.
+\begin{aligned}
+&\kappa=\lambda T.
+\end{aligned}
 \tag{2}
 ```
 
@@ -42,41 +52,51 @@ The pulse description consists of finite data. Those encoded coefficients and bo
 
 ## The reconstruction theorem
 
-Let $`0<\epsilon<1`$ and $`0<p<1`$. Choose a local error parameter
+Let $`0<\epsilon<1`$ and $`0\lt p<1`$. Choose a local error parameter
 ```math
-\eta=\frac{\epsilon e^{-2\kappa}}{16}.
+\begin{aligned}
+&\eta=\frac{\epsilon e^{-2\kappa}}{16}.
+\end{aligned}
 \tag{3}
 ```
 It is harmless to replace $`\eta`$ by a computable dyadic lower approximation between $`\eta/2`$ and $`\eta`$.
 
 Let $`I_q`$ denote interpolation of degree $`q`$ at the $`q+1`$ Chebyshev–Lobatto nodes on a panel. Let $`L_q`$ be any certified upper bound for its Lebesgue constant. A convenient analytic choice is
 ```math
-L_q=2+\frac{2}{\pi}\log(q+1).
+\begin{aligned}
+&L_q=2+\frac{2}{\pi}\log(q+1).
+\end{aligned}
 \tag{4}
 ```
 An upward rational approximation to this bound can be used in every implementation formula. Alternatively, $`3+\lceil\log_2(q+1)\rceil`$ is an entirely integer, slightly more conservative choice. The relevant property is $`\|I_q f\|_\infty\le L_q\|f\|_\infty`$, with $`L_q=O(\log(q+1))`$. [ATAP]
 
 Set
 ```math
-q=\max\!\left\{1,\left\lceil\log_2\frac{128}{\eta}\right\rceil\right\},
+\begin{aligned}
+&q=\max\!\left\{1,\left\lceil\log_2\frac{128}{\eta}\right\rceil\right\},
 \qquad
 I=\left\lceil\log_2\frac{16L_q}{\eta}\right\rceil,
+\end{aligned}
 \tag{5}
 ```
 and use nodal and coefficient-map error budgets
 ```math
-\delta\le\frac{\eta}{64L_q},
+\begin{aligned}
+&\delta\le\frac{\eta}{64L_q},
 \qquad
 \beta\le\frac{\eta}{64}.
+\end{aligned}
 \tag{6}
 ```
 Partition every supplied pulse interval into panels of length at most
 ```math
-h_{\max}
+\begin{aligned}
+&h_{\max}
 =\min\left\{
 \frac{1}{64(\Lambda+2\lambda)},
 \frac{1}{4\lambda L_q}
 \right\}.
+\end{aligned}
 \tag{7}
 ```
 The second constraint is omitted when $`\lambda=0`$; the constant equation $`\Lambda=\lambda=0`$ is handled below.
@@ -86,35 +106,45 @@ $`h_{\max}/2\le\underline h\le h_{\max}`$, and split each supplied pulse of leng
 
 On each panel, perform $`I`$ noisy collocation iterations as specified in the next section. Each iteration estimates $`q+1`$ prescribed-field means. Assume that each reported nodal value has conditional error at most $`\delta`$, with conditional failure probability at most $`p/J`$, where
 ```math
-J=P(q+1)I
+\begin{aligned}
+&J=P(q+1)I
+\end{aligned}
 \tag{8}
 ```
 and $`P`$ is the predetermined panel count. The coefficient computation must produce a real polynomial of degree $`q`$ whose sup-norm discrepancy from the exact interpolant of the clipped reports is at most $`\beta`$.
 
 Let the ideal prepared initial state be $`\rho_{\rm prep}`$, with
 ```math
-\|\rho_{\rm prep}-\rho_0\|_1\le\zeta.
+\begin{aligned}
+&\|\rho_{\rm prep}-\rho_0\|_1\le\zeta.
+\end{aligned}
 \tag{9}
 ```
 The statement permits $`\zeta=0`$, as for a specified product Fock state.
 
 **Theorem.** With probability at least $`1-p`$, the algorithm constructs an explicit real piecewise polynomial $`p(t)`$ and its prescribed-field trajectory
 ```math
-\dot{\widetilde\rho}(t)
+\begin{aligned}
+&\dot{\widetilde\rho}(t)
 =-i[B(t)+\lambda p(t)A,\widetilde\rho(t)],
 \qquad
 \widetilde\rho(0)=\rho_{\rm prep},
+\end{aligned}
 \tag{10}
 ```
 such that, for $`0\le t\le T`$,
 ```math
-\|\widetilde\rho(t)-\rho(t)\|_1
+\begin{aligned}
+&\|\widetilde\rho(t)-\rho(t)\|_1
 \le e^{2\lambda t}\zeta+\eta(e^{2\lambda t}-1),
+\end{aligned}
 \tag{11}
 ```
 and, with either one-sided value at a panel boundary,
 ```math
-|p(t)-m(t)|\le e^{2\lambda t}(\zeta+\eta).
+\begin{aligned}
+&|p(t)-m(t)|\le e^{2\lambda t}(\zeta+\eta).
+\end{aligned}
 \tag{12}
 ```
 
@@ -122,7 +152,9 @@ In particular, if $`\zeta\le\eta`$, returning the final polynomial endpoint with
 
 The panel count can be bounded explicitly by
 ```math
-P\le K+128T\Lambda+256\kappa+8\kappa L_q.
+\begin{aligned}
+&P\le K+128T\Lambda+256\kappa+8\kappa L_q.
+\end{aligned}
 \tag{13}
 ```
 Indeed $`P\le K+T/\underline h\le K+2T/h_{\max}`$, and the maximum defining $`h_{\max}^{-1}`$ is at most $`64(\Lambda+2\lambda)+4\lambda L_q`$.
@@ -137,7 +169,9 @@ P&=O(K+T\Lambda+\kappa L_q).
 ```
 There are $`J`$ scalar response evaluations and $`O(Pq)`$ retained real coefficients. The response precision is
 ```math
-\delta=\Theta\!\left(\frac{\epsilon e^{-2\kappa}}{L_q}\right).
+\begin{aligned}
+&\delta=\Theta\!\left(\frac{\epsilon e^{-2\kappa}}{L_q}\right).
+\end{aligned}
 \tag{15}
 ```
 
@@ -149,12 +183,14 @@ Suppose panels $`0,\ldots,k-1`$ already have stored polynomials $`p_0,\ldots,p_{
 
 For any real continuous function $`v`$ on the current panel of length $`h_k`$, let
 ```math
-F_{\sigma_k}(v)(s)
+\begin{aligned}
+&F_{\sigma_k}(v)(s)
 =\mathrm{Tr}\!\left[
 O\,U_v(s)\sigma_k U_v(s)^\dagger
 \right],
 \quad
 0\le s\le h_k,
+\end{aligned}
 \tag{16}
 ```
 where $`U_v`$ is the ordinary unitary propagator of $`B_j+\lambda v(s)A`$ on that panel.
@@ -175,39 +211,51 @@ On each pulse interval the vector field in (1) is locally Lipschitz on finite-di
 
 For the quantitative complex-time bound, start at any physical state $`\sigma`$ at the left end of a panel and continue the current constant $`B_j`$ as a constant across a complex neighborhood. Define
 ```math
-\mathcal V(R)=-i[B_j+\lambda\mathrm{Tr}(OR)A,R].
+\begin{aligned}
+&\mathcal V(R)=-i[B_j+\lambda\mathrm{Tr}(OR)A,R].
+\end{aligned}
 \tag{17}
 ```
 This is a holomorphic polynomial in the entries of $`R`$. The use of a complex matrix $`R`$, rather than a wavefunction and its conjugate, is useful here.
 
 On the trace-norm ball $`\|R-\sigma\|_1\le1`$, one has $`\|R\|_1\le2`$. The inequalities
 ```math
-|\mathrm{Tr}(OR)|\le\|R\|_1,
+\begin{aligned}
+&|\mathrm{Tr}(OR)|\le\|R\|_1,
 \qquad
 \|[X,Y]\|_1\le2\|X\|\|Y\|_1
+\end{aligned}
 \tag{18}
 ```
 give
 ```math
-\|\mathcal V(R)\|_1\le4\Lambda+8\lambda,
+\begin{aligned}
+&\|\mathcal V(R)\|_1\le4\Lambda+8\lambda,
+\end{aligned}
 \tag{19}
 ```
 and, for two matrices in the ball,
 ```math
-\|\mathcal V(R)-\mathcal V(S)\|_1
+\begin{aligned}
+&\|\mathcal V(R)-\mathcal V(S)\|_1
 \le(2\Lambda+8\lambda)\|R-S\|_1.
+\end{aligned}
 \tag{20}
 ```
 
 Take
 ```math
-r_*=\frac{1}{16(\Lambda+2\lambda)}.
+\begin{aligned}
+&r_*=\frac{1}{16(\Lambda+2\lambda)}.
+\end{aligned}
 \tag{21}
 ```
-On the Banach space of matrix functions holomorphic in $`|z|<r_*`$, continuous on its closure, and within unit sup trace distance of $`\sigma`$, the complex Picard map
+On the Banach space of matrix functions holomorphic in $`|z|\lt r_*`$, continuous on its closure, and within unit sup trace distance of $`\sigma`$, the complex Picard map
 ```math
-\mathcal P(R)(z)
+\begin{aligned}
+&\mathcal P(R)(z)
 =\sigma+\int_0^z \mathcal V(R(w))\,dw
+\end{aligned}
 \tag{22}
 ```
 maps the ball into itself. Indeed its displacement is at most
@@ -220,15 +268,19 @@ r_*(2\Lambda+8\lambda)\le\frac14.
 ```
 The integrand is holomorphic and the integral may be taken along the straight segment. The fixed point is holomorphic, satisfies $`\|R(z)\|_1\le2`$, and agrees with the physical solution for real $`z`$ by uniqueness. Its mean
 ```math
-m_\sigma(z)=\mathrm{Tr}(OR(z))
+\begin{aligned}
+&m_\sigma(z)=\mathrm{Tr}(OR(z))
+\end{aligned}
 \tag{23}
 ```
 is therefore holomorphic and bounded by $`2`$ on that disk.
 
-Equation (7) implies $`h_k\le r_*/4`$. For the interval $`[0,h_k]`$, the Bernstein ellipse with parameter $`2`$ has farthest point from $`0`$ at distance $`9h_k/8<r_*`$. The analytic Chebyshev interpolation estimate with bound $`2`$ consequently gives [ATAP, Theorem 8.2]
+Equation (7) implies $`h_k\le r_*/4`$. For the interval $`[0,h_k]`$, the Bernstein ellipse with parameter $`2`$ has farthest point from $`0`$ at distance $`9h_k/8\lt r_*`$. The analytic Chebyshev interpolation estimate with bound $`2`$ consequently gives [ATAP, Theorem 8.2]
 ```math
-\|m_\sigma-I_qm_\sigma\|_\infty
+\begin{aligned}
+&\|m_\sigma-I_qm_\sigma\|_\infty
 \le8\,2^{-q}.
+\end{aligned}
 \tag{24}
 ```
 
@@ -238,31 +290,41 @@ This analytic continuation is that of the current pulse equation. It need not co
 
 For two prescribed real functions $`v,w`$, Duhamel's identity and unitary invariance of trace norm imply
 ```math
-\|\rho_{\sigma,v}(s)-\rho_{\sigma,w}(s)\|_1
+\begin{aligned}
+&\|\rho_{\sigma,v}(s)-\rho_{\sigma,w}(s)\|_1
 \le2\lambda\int_0^s|v(u)-w(u)|\,du.
+\end{aligned}
 \tag{25}
 ```
 It follows that
 ```math
-\|F_\sigma(v)-F_\sigma(w)\|_\infty
+\begin{aligned}
+&\|F_\sigma(v)-F_\sigma(w)\|_\infty
 \le2\lambda h_k\|v-w\|_\infty.
+\end{aligned}
 \tag{26}
 ```
 This bound holds for arbitrary real continuous $`v,w`$. No complex-time bound, analyticity promise, or physical-state interpretation is required of the proxies.
 
 The finite-dimensional map
 ```math
-\mathcal C_\sigma(v)=I_qF_\sigma(v)
+\begin{aligned}
+&\mathcal C_\sigma(v)=I_qF_\sigma(v)
+\end{aligned}
 \tag{27}
 ```
 on the space of real polynomials of degree at most $`q`$ has contraction factor
 ```math
-\theta_k=2\lambda h_kL_q\le\frac12.
+\begin{aligned}
+&\theta_k=2\lambda h_kL_q\le\frac12.
+\end{aligned}
 \tag{28}
 ```
 Hence it has a unique fixed polynomial $`v_\sigma^*`$. Since all real-time responses lie in $`[-1,1]`$,
 ```math
-\|v_\sigma^*\|_\infty\le L_q.
+\begin{aligned}
+&\|v_\sigma^*\|_\infty\le L_q.
+\end{aligned}
 \tag{29}
 ```
 
@@ -284,15 +346,19 @@ Only the exact local mean entered the analytic approximation estimate. The contr
 
 Clipping a reported value to $`[-1,1]`$ cannot increase its error relative to the exact physical response. If all nodal errors in a round are at most $`\delta`$, and the stored polynomial differs from their ideal interpolant by at most $`\beta`$, then
 ```math
-\|v_{r+1}-\mathcal C_\sigma(v_r)\|_\infty
+\begin{aligned}
+&\|v_{r+1}-\mathcal C_\sigma(v_r)\|_\infty
 \le L_q\delta+\beta.
+\end{aligned}
 \tag{31}
 ```
 Starting from $`v_0=0`$, equations (28)–(29) give
 ```math
-\|v_I-v_\sigma^*\|_\infty
+\begin{aligned}
+&\|v_I-v_\sigma^*\|_\infty
 \le\theta_k^I L_q+
 \frac{L_q\delta+\beta}{1-\theta_k}.
+\end{aligned}
 \tag{32}
 ```
 The choices (5)–(6) imply
@@ -303,14 +369,18 @@ The choices (5)–(6) imply
 ```
 Therefore
 ```math
-\|p_k-m_{\sigma_k}\|_\infty\le\frac{\eta}{4}\le\eta.
+\begin{aligned}
+&\|p_k-m_{\sigma_k}\|_\infty\le\frac{\eta}{4}\le\eta.
+\end{aligned}
 \tag{33}
 ```
 We retain the simpler bound $`\eta`$ in the global statement.
 
 Every stored iterate has a separate a priori real bound. It is within $`\beta`$ of the interpolant of values in $`[-1,1]`$, so
 ```math
-\|v_r\|_\infty\le L_q+\beta\le2L_q
+\begin{aligned}
+&\|v_r\|_\infty\le L_q+\beta\le2L_q
+\end{aligned}
 \tag{34}
 ```
 for $`r\ge1`$, and $`v_0=0`$. This bound is independent of earlier measurement errors once clipping and the coefficient accuracy requirement are enforced.
@@ -319,16 +389,20 @@ for $`r\ge1`$, and $`v_0=0`$. This bound is independent of earlier measurement e
 
 Let $`\Phi_s`$ denote exact nonlinear evolution on the current pulse. For density matrices $`\rho,\sigma`$, use the Hamiltonian of one solution as the unitary reference. The remaining field difference is bounded by $`\lambda\|\Phi_s(\rho)-\Phi_s(\sigma)\|_1`$, so Grönwall's inequality gives
 ```math
-\|\Phi_s(\rho)-\Phi_s(\sigma)\|_1
+\begin{aligned}
+&\|\Phi_s(\rho)-\Phi_s(\sigma)\|_1
 \le e^{2\lambda s}\|\rho-\sigma\|_1.
+\end{aligned}
 \tag{35}
 ```
 There is no factor involving the norm of $`B_j`$ in this real-time stability estimate.
 
 On a panel, compare its prescribed-field trajectory from $`\sigma_k`$ with exact nonlinear evolution from the same $`\sigma_k`$. Equation (25), with one prescribed field replaced by the already existing exact mean $`m_{\sigma_k}`$, gives
 ```math
-\|\rho_{\sigma_k,p_k}(s)-\Phi_s(\sigma_k)\|_1
+\begin{aligned}
+&\|\rho_{\sigma_k,p_k}(s)-\Phi_s(\sigma_k)\|_1
 \le2\lambda s\eta.
+\end{aligned}
 \tag{36}
 ```
 This comparison does not assume an oracle for that exact mean.
@@ -339,22 +413,28 @@ D_k=\|\sigma_k-\rho(t_k)\|_1.
 ```
 At the panel endpoint,
 ```math
-D_{k+1}\le e^{2\lambda h_k}D_k+2\lambda h_k\eta.
+\begin{aligned}
+&D_{k+1}\le e^{2\lambda h_k}D_k+2\lambda h_k\eta.
+\end{aligned}
 \tag{37}
 ```
 Since $`2\lambda h_k\le e^{2\lambda h_k}-1`$, iteration telescopes to
 ```math
-D_k\le e^{2\lambda t_k}\zeta+
+\begin{aligned}
+&D_k\le e^{2\lambda t_k}\zeta+
 \eta(e^{2\lambda t_k}-1).
+\end{aligned}
 \tag{38}
 ```
 The same argument with a partial last panel proves (11).
 
 For the mean table itself, compare $`p_k(t_k+s)`$ first with $`m_{\sigma_k}(s)`$, and then compare the two exact nonlinear trajectories:
 ```math
-|p_k(t_k+s)-m(t_k+s)|
+\begin{aligned}
+&|p_k(t_k+s)-m(t_k+s)|
 \le\eta+e^{2\lambda s}D_k
 \le e^{2\lambda(t_k+s)}(\eta+\zeta).
+\end{aligned}
 \tag{39}
 ```
 This proves (12).
@@ -367,28 +447,36 @@ All local inequalities hold for every physical $`\sigma_k`$, including the state
 
 On a panel use the normalized coordinate $`x=2s/h_k-1`$. At nodes $`x_j=\cos(j\pi/q)`$, let $`y_j\in[-1,1]`$ be the clipped finite reports. The exact Chebyshev coefficients of their interpolant are
 ```math
-c_\ell=\frac{2w_\ell}{q}
+\begin{aligned}
+&c_\ell=\frac{2w_\ell}{q}
 \sum_{j=0}^{q}w_jy_j
 \cos\frac{\pi\ell j}{q},
 \qquad
-w_0=w_q=\frac12,\quad w_j=1\ \ (0<j<q).
+w_0=w_q=\frac12,\quad w_j=1\ \ (0\lt j\lt q).
+\end{aligned}
 \tag{40}
 ```
 They satisfy $`|c_\ell|\le2`$ and
 ```math
-\sum_{\ell=0}^{q}|c_\ell|\le2(q+1).
+\begin{aligned}
+&\sum_{\ell=0}^{q}|c_\ell|\le2(q+1).
+\end{aligned}
 \tag{41}
 ```
 Compute finite real coefficients $`\widehat c_\ell`$ with
 ```math
-\sum_{\ell=0}^{q}|\widehat c_\ell-c_\ell|\le\beta.
+\begin{aligned}
+&\sum_{\ell=0}^{q}|\widehat c_\ell-c_\ell|\le\beta.
+\end{aligned}
 \tag{42}
 ```
 Because $`|T_\ell(x)|\le1`$ on $`[-1,1]`$, (42) implies the required coefficient-map error. A direct cosine transform takes $`O(q^2)`$ arithmetic operations. It can meet (42) with a number of fractional bits polynomial in $`\log(q+1)+\log(1/\beta)`$; input reports and panel boundaries retain their own bit lengths.
 
 The exact computed field is
 ```math
-\widehat p(x)=\sum_{\ell=0}^{q}\widehat c_\ell T_\ell(x).
+\begin{aligned}
+&\widehat p(x)=\sum_{\ell=0}^{q}\widehat c_\ell T_\ell(x).
+\end{aligned}
 \tag{43}
 ```
 Its coefficient-rounding error is counted once, as $`\beta`$ in (31). Numerical simulation or reversible evaluation of this already stored polynomial is a different operation; its error belongs to the nodal response budget $`\delta`$.
@@ -407,9 +495,11 @@ These contributions can be assigned fixed fractions of $`\delta`$. A guarantee o
 
 For node times, the exact prescribed response satisfies
 ```math
-\left|\frac{d}{ds}F_\sigma(v)(s)\right|
+\begin{aligned}
+&\left|\frac{d}{ds}F_\sigma(v)(s)\right|
 \le2(\Lambda+\lambda\|v\|_\infty)
 \le2(\Lambda+2\lambda L_q).
+\end{aligned}
 \tag{44}
 ```
 An absolute time error at most a prescribed fraction of
@@ -423,7 +513,9 @@ The reference state $`\rho_{\rm prep}`$ in (9) is fixed. Its discrepancy from th
 
 Let $`C_{\rm response}(\delta,p/J)`$ be a fully implemented cost for one such scalar expectation, including its complete prefix. The reconstruction uses at most
 ```math
-J\,C_{\rm response}(\delta,p/J)
+\begin{aligned}
+&J\,C_{\rm response}(\delta,p/J)
+\end{aligned}
 \tag{45}
 ```
 of that cost, plus input reading, $`O(Jq)`$ coefficient-processing arithmetic operations, coefficient storage, circuit construction, and final rounding. The retained mean table uses $`O(Pqb)`$ classical bits when coefficients have $`b`$-bit precision.
@@ -444,9 +536,11 @@ If the compiled response primitive has inverse-linear precision cost, then (14)�
 
 **Several fields.** For
 ```math
-H(t)=B(t)+\sum_{a=1}^{d}\lambda_a m_a(t)A_a,
+\begin{aligned}
+&H(t)=B(t)+\sum_{a=1}^{d}\lambda_a m_a(t)A_a,
 \qquad
 m_a(t)=\mathrm{Tr}(O_a\rho(t)),
+\end{aligned}
 \tag{46}
 ```
 with bounded Hermitian $`A_a,O_a`$, replace $`\lambda`$ everywhere by

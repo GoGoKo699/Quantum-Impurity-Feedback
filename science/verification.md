@@ -101,12 +101,14 @@ The recorded certificate is [active_probe_certificate.json](../results/active_pr
 
 The constants are
 ```math
-t_c=\frac1{1024},\qquad
-\tau_p=\frac{1023}{1024},\qquad
-a_0=2^{-24},\qquad
-\sqrt{a_0}=2^{-12},\qquad
-\zeta=2^{-16},\qquad
-d_0=2t_c+2\sqrt{a_0}+2\zeta=\frac{81}{32768}.
+\begin{aligned}
+t_c&=\frac1{1024},\qquad
+\tau_p=\frac{1023}{1024},\\
+a_0&=2^{-24},\qquad
+\sqrt{a_0}=2^{-12},\\
+\zeta&=2^{-16},\\
+d_0&=2t_c+2\sqrt{a_0}+2\zeta=\frac{81}{32768}.
+\end{aligned}
 ```
 The script encloses $`e^{2\tau_p}`$ by a positive Taylor sum through degree 32 and a geometric bound on its remaining tail. It encloses $`\cosh(\tau_p)`$ using the corresponding positive even-power series, then inverts that positive interval to enclose $`\mathrm{sech}(\tau_p)`$. For $`\cos(\tau_p)`$, the alternating series and its first omitted term give upper and lower rational bounds. No floating-point exponential, trigonometric evaluation, or square root is used.
 

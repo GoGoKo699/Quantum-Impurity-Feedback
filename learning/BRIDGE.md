@@ -42,8 +42,8 @@ The same letter can have different roles in the anchor and the project. The foll
 | The preparation unitary in Section 4.2 | A compiled circuit that prepares the original input and simulates the entire prescribed-field prefix. Its cost and its inverse are charged. |
 | Marked probability $`p_0`$ in Section 4.2 | The probability $`a_V`$ that the impurity readout bit is $`1`$ after a particular compiled circuit $`V`$; its centered mean is $`1-2a_V`$. |
 | Failure parameter $`\delta`$ in Section 4.2 | Written $`p_{\rm fail}`$ here. The project's $`\delta`$ is instead an additive error allowance for one response estimate. |
-| Query count denoted $`T`$ in part of Section 4.2 | Distinct from the project's physical duration $`T`$. One complete time prefix may be called many times during estimation. |
-| Generic matrix $`A`$ in Chapter 6 | Distinct from the project's fixed local observable $`A=Z_u`$. The matrix being simulated here is $`B(t)+\lambda p(t)A`$. |
+| Query count denoted $`\mathstrut T`$ in part of Section 4.2 | Distinct from the project's physical duration $`\mathstrut T`$. One complete time prefix may be called many times during estimation. |
+| Generic matrix $`A`$ in Chapter 6 | Distinct from the project's fixed local observable $`\mathstrut A=Z_u`$. The matrix being simulated here is $`B(t)+\lambda p(t)A`$. |
 | A matrix-entry or block-encoding oracle | An access contract whose implementation must be constructed. Here the finite Pauli list and polynomial coefficients supply that construction. |
 | Matrix sparsity $`s`$ in Section 6.3 | Called $`d\leq R+1`$ in the cost proof, where $`R`$ bounds the Pauli term count. It is unrelated to the interaction action $`S`$. |
 | Ancilla count $`m`$ in Definition 6.1 | Distinct from the time-dependent mean $`m(t)`$. Work registers are included in the circuit and reflection costs. |
@@ -169,15 +169,7 @@ After several panels, the initial state for the next local problem is generally 
 
 Every response evaluation on panel $`k`$ prepares the original input, replays all those earlier panels, and then runs the current trial field up to the requested node. Once the classical history is fixed, this is an ordinary prescribed circuit. Estimation consumes its output; the next evaluation constructs a fresh copy through the same procedure.
 
-```mermaid
-flowchart TD
-    Prefix["Fixed earlier panels"] --> Replay["Prepare and replay"]
-    Trial["Current polynomial"] --> Replay
-    Replay --> Means["Estimate nodal means"]
-    Means --> Update["Clip and interpolate"]
-    Update -->|"next round"| Trial
-    Update -->|"after I rounds"| Store["Store current panel"]
-```
+![Prefix replay, nodal estimation, and interpolation repeat before storing the current field panel.](../assets/prefix-feedback-loop.svg)
 
 After the final iteration, the stored polynomial defines the next prefix. This definition uses that final polynomial, even if the preceding nodal experiments used an earlier iterate. The next response replays the final recorded curve. Passing along a measured state from a preceding iteration would represent a different algorithm.
 

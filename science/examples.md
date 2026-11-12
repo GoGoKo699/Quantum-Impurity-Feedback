@@ -3,9 +3,11 @@
 A two-mode, one-fermion sector provides a transparent diagnostic. In its dual-rail basis, take
 
 ```math
-H(t)=\Omega X+\lambda z(t)Z,\qquad
-z(t)=\mathrm{Tr}[Z\rho(t)],\qquad
-\rho(0)=|0\rangle\langle0|.
+\begin{aligned}
+H(t)&=\Omega X+\lambda z(t)Z,\\
+z(t)&=\mathrm{Tr}[Z\rho(t)],\\
+\rho(0)&=|0\rangle\langle0|.
+\end{aligned}
 \tag{E1}
 ```
 
@@ -16,9 +18,11 @@ This is an analytically soluble instance. Its role is to expose the feedback eff
 Writing the Bloch coordinates as $`(x,y,z)`$ gives
 
 ```math
-\dot x=-2\lambda zy,\qquad
-\dot y=2\lambda zx-2\Omega z,\qquad
-\dot z=2\Omega y.
+\begin{aligned}
+\dot x&=-2\lambda zy,\\
+\dot y&=2\lambda zx-2\Omega z,\\
+\dot z&=2\Omega y.
+\end{aligned}
 \tag{E2}
 ```
 
@@ -32,9 +36,11 @@ x^2+y^2+z^2=1,\qquad
 are conserved. At $`\lambda=2\Omega`$, a solution satisfying the initial condition is
 
 ```math
-z(t)=\mathrm{sech}(\lambda t),\qquad
-x(t)=\tanh^2(\lambda t),\qquad
-y(t)=-\mathrm{sech}(\lambda t)\tanh(\lambda t).
+\begin{aligned}
+z(t)&=\mathrm{sech}(\lambda t),\\
+x(t)&=\tanh^2(\lambda t),\\
+y(t)&=-\mathrm{sech}(\lambda t)\tanh(\lambda t).
+\end{aligned}
 \tag{E3}
 ```
 
@@ -43,7 +49,9 @@ Direct substitution in (E2) verifies all three equations, including the initiall
 With the feedback term removed, the same $`\Omega X`$ drive gives
 
 ```math
-z_{\mathrm{bare}}(t)=\cos(\lambda t).
+\begin{aligned}
+z_{\mathrm{bare}}(t)&=\cos(\lambda t).
+\end{aligned}
 \tag{E4}
 ```
 

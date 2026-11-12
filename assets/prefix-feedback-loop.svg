@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="590" viewBox="0 0 660 590" role="img" aria-labelledby="prefix-loop-title prefix-loop-desc">
+  <title id="prefix-loop-title">Repeated prefix replay reconstructs one field panel</title>
+  <desc id="prefix-loop-desc">Fixed earlier panels and the current polynomial feed preparation and replay. The circuit estimates nodal means, which are clipped and interpolated. The next round uses the updated current polynomial. After I rounds, the current panel is stored.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 2 2 L 10 6 L 2 10 Z" fill="#4d6380"/>
+    </marker>
+  </defs>
+  <rect width="660" height="590" fill="#ffffff"/>
+  <g fill="none" stroke="#4d6380" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)">
+    <path d="M 144 84 V 108 Q 144 112 148 112 H 260 Q 264 112 264 116 V 140"/>
+    <path d="M 484 84 V 108 Q 484 112 480 112 H 380 Q 376 112 376 116 V 140"/>
+    <path d="M 320 196 V 250"/>
+    <path d="M 320 306 V 360"/>
+    <path d="M 320 416 V 500"/>
+    <path d="M 450 388 H 620 Q 636 388 636 372 V 72 Q 636 56 620 56 H 614"/>
+  </g>
+  <g stroke-width="1.6">
+    <rect x="24" y="28" width="240" height="56" rx="10" fill="#eaf1fb" stroke="#4d6b94"/>
+    <rect x="354" y="28" width="260" height="56" rx="10" fill="#eaf1fb" stroke="#4d6b94"/>
+    <rect x="190" y="140" width="260" height="56" rx="10" fill="#f5f8fc" stroke="#7d8998"/>
+    <rect x="190" y="250" width="260" height="56" rx="10" fill="#f5f8fc" stroke="#7d8998"/>
+    <rect x="190" y="360" width="260" height="56" rx="10" fill="#f5f8fc" stroke="#7d8998"/>
+    <rect x="190" y="500" width="260" height="56" rx="10" fill="#e8f4ed" stroke="#4f7d62"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#172b4d" text-anchor="middle">
+    <text x="144" y="63">Fixed earlier panels</text>
+    <text x="484" y="63">Current polynomial</text>
+    <text x="320" y="175">Prepare and replay</text>
+    <text x="320" y="285">Estimate nodal means</text>
+    <text x="320" y="395">Clip and interpolate</text>
+    <text x="320" y="535">Store current panel</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#344b68">
+    <text x="535" y="374" text-anchor="middle">next round</text>
+    <text x="334" y="463">after I rounds</text>
+  </g>
+</svg>

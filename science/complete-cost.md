@@ -9,10 +9,10 @@ The local approximation and stability estimates are proved in [Spectral reconstr
 The input consists of:
 
 - An integer $`n`$, an initial computational-basis state on $`n`$ qubits, and a readout qubit $`a`$. In a fermionic representation the initial state is a specified Fock product state.
-- A rational final time $`T>0`$, a rational feedback strength $`\lambda>0`$, and an explicit ordered list of $`K`$ constant base-Hamiltonian pulses. All pulse boundaries, coefficients, and parameters are finite binary rational numbers, represented by integer numerators and denominators.
+- A rational final time $`\mathstrut T>0`$, a rational feedback strength $`\lambda>0`$, and an explicit ordered list of $`K`$ constant base-Hamiltonian pulses. All pulse boundaries, coefficients, and parameters are finite binary rational numbers, represented by integer numerators and denominators.
 - On pulse $`j`$, a list of at most $`R`$ Pauli strings and real coefficients defining $`B_j`$. Supplied scalar external sources have already been included in $`B_j`$.
 - Bounds $`\Lambda\geq\max_j\|B_j\|`$ and $`\alpha_0\geq\max_j\sum_r|b_{jr}|`$. One may use $`\Lambda=\alpha_0`$. These bounds are resources, not constants hidden in the input length.
-- An additive error $`0<\epsilon<1`$ and a failure probability $`0<p<1/2`$.
+- An additive error $`0<\epsilon<1`$ and a failure probability $`0\lt p\lt1/2`$.
 
 The target is
 
@@ -200,7 +200,7 @@ Amplitude estimation to additive mean error $`O(\delta)`$ uses $`O(1/\delta)`$ a
 
 The reflection about the initial all-zero register acts on the system and all retained work registers. It costs $`O(n+qb+\ell^2)`$ gates and at most the same order of clean workspace by a reversible AND tree, and is included below. Initial basis-state preparation costs $`O(n)`$. Controlled operations and inverses are constructed from the circuit's gate list. No coherent control of an unknown analog device is assumed.
 
-For definiteness, take the compiled gate set to be Clifford plus $`T`$, including inverses. Controlled versions have constant exact overhead with clean ancillas. For example, a controlled $`T`$ gate computes the AND of the control and target into an ancilla, applies $`T`$ to that ancilla, and uncomputes; a controlled-CNOT is a Toffoli, and a controlled $`H`$ gate has a constant Clifford plus $`T`$ decomposition. Thus controlling the already compiled $`V`$ does not require an independently approximated target evolution or a new accuracy parameter. Its inverse is the exact reverse of that same finite gate list.
+For definiteness, take the compiled gate set to be Clifford plus $`\mathstrut T`$, including inverses. Controlled versions have constant exact overhead with clean ancillas. For example, a controlled $`\mathstrut T`$ gate computes the AND of the control and target into an ancilla, applies $`\mathstrut T`$ to that ancilla, and uncomputes; a controlled-CNOT is a Toffoli, and a controlled $`H`$ gate has a constant Clifford plus $`\mathstrut T`$ decomposition. Thus controlling the already compiled $`V`$ does not require an independently approximated target evolution or a new accuracy parameter. Its inverse is the exact reverse of that same finite gate list.
 
 The phase-estimation control registers, Fourier transform, and classical conversion of a phase estimate into a probability also have finite circuits or bit algorithms. Their overhead, polynomial in $`\ell`$, is absorbed by (2)–(3). The Fourier-transform rotations can be synthesized to a fixed small error per amplitude-estimation run, preserving a constant success probability before the median amplification; they do not require an additional factor proportional to $`1/\delta`$.
 

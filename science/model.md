@@ -28,18 +28,22 @@ A=1-2a_u^\dagger a_u=Z_u,\qquad \|A\|=1.
 For $`\lambda\ge0`$ and $`T>0`$, the target is the unique physical solution of
 
 ```math
-\dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
+\begin{aligned}
+&\dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
 \qquad m(t)=\mathrm{Tr}[A\rho(t)],
 \qquad \rho(0)=\rho_0.
+\end{aligned}
 \tag{M1}
 ```
 
 The initial state is a specified Fock product state for the impurity application and the hardness constructions. More generally, the algorithm accepts a supplied finite preparation circuit, including a purification when needed, and pays its preparation and inverse costs. It does not assume that an unknown interacting equilibrium state is available.
 
-Given $`0<\epsilon<1`$ and $`0<p<1`$, return a classical number $`\widehat m_T`$ satisfying
+Given $`0<\epsilon<1`$ and $`0\lt p<1`$, return a classical number $`\widehat m_T`$ satisfying
 
 ```math
-\Pr\bigl[|\widehat m_T-m(T)|\le\epsilon\bigr]\ge1-p.
+\begin{aligned}
+&\Pr\bigl[|\widehat m_T-m(T)|\le\epsilon\bigr]\ge1-p.
+\end{aligned}
 \tag{M2}
 ```
 
@@ -52,9 +56,11 @@ The scalar source used in the causal reduction is an ordinary part of the input:
 For the classical comparison and physical interpretation, split the base into
 
 ```math
-B(t)=Q(t)+V(t)+b(t)A,
+\begin{aligned}
+&B(t)=Q(t)+V(t)+b(t)A,
 \qquad
 Q(t)=\sum_{j,k}h_{jk}(t)a_j^\dagger a_k.
+\end{aligned}
 \tag{M3}
 ```
 
@@ -69,15 +75,19 @@ Jordan–Wigner strings, their lengths and their selectors are included in the c
 The feedback action is
 
 ```math
-\kappa=\lambda T.
+\begin{aligned}
+&\kappa=\lambda T.
+\end{aligned}
 \tag{M4}
 ```
 
 It controls the stability factor in the reconstruction theorem. Separately, expand the non-Gaussian impurity term in normalized even Majorana monomials,
 
 ```math
-V(t)=\sum_a v_a(t)M_a,\qquad \|M_a\|=1,
+\begin{aligned}
+&V(t)=\sum_a v_a(t)M_a,\qquad \|M_a\|=1,
 \qquad S=\int_0^T\sum_a|v_a(t)|\,dt.
+\end{aligned}
 \tag{M5}
 ```
 
@@ -92,8 +102,10 @@ This is a comparison of proved upper bounds and a separate conditional complexit
 One physical motivation is an array of correlated units, each consisting of an impurity and its own bath, coupled through their local charge. For $`M`$ identical units, consider the formal collective Hamiltonian
 
 ```math
-\mathcal H_M(t)=\sum_{r=1}^M B^{(r)}(t)
- +\frac{\lambda}{M-1}\sum_{r<s}A^{(r)}A^{(s)}.
+\begin{aligned}
+&\mathcal H_M(t)=\sum_{r=1}^M B^{(r)}(t)
+ +\frac{\lambda}{M-1}\sum_{r\lt s}A^{(r)}A^{(s)}.
+\end{aligned}
 \tag{M6}
 ```
 

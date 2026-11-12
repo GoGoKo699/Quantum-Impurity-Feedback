@@ -23,7 +23,7 @@
     {
       "path": "science/spectral-reconstruction.md",
       "index": 57,
-      "source_sha256": "5b38f621db4f161178ccea6a2826a4f8c632513651b281f08372b8e3f9b59687",
+      "source_sha256": "0d911980243b2016afff712d11343c0d8f85ecaff0a2956a075718b2149d19a7",
       "required_text": [
         "e2λtζ+η",
         "(e2λt−1)",
@@ -33,7 +33,7 @@
     {
       "path": "science/classical-boundary.md",
       "index": 221,
-      "source_sha256": "2c98391d7fe790431f2929c43cbfd999c3bd212059e95a117d25eefb27046f63",
+      "source_sha256": "0846bfc2196fca12e87e8886d8abb6efeda4d241d56685dcf122c3caa1e53d35",
       "required_text": [
         "S+κ=O(logN)",
         "(49)"
@@ -51,7 +51,7 @@
     {
       "path": "science/hardness.md",
       "index": 155,
-      "source_sha256": "628c9563b9f311e83b35172f5f269c7202f07d77f833002395e5b2781fcf5f54",
+      "source_sha256": "57a4dbd1a91372d47dedd31d01267a2946172ede63c8bc369df5cc9eebb665bc",
       "required_text": [
         "sech(τp)−cos(τp)",
         "(e2τp+1)d0",
