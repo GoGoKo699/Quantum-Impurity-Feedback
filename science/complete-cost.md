@@ -1,0 +1,293 @@
+# Complete cost of scalar feedback reconstruction
+
+This page converts the analytic reconstruction theorem into an algorithm on a finite classical input and a fixed quantum gate set. It charges state preparation, every replay of the dynamics, acquisition of the unknown field, finite precision, the classical coefficient tables, circuit generation, and the final scalar output. The result is a conservative upper bound; its dependence on Hamiltonian sparsity and pulse count is not optimized.
+
+The local approximation and stability estimates are proved in [Spectral reconstruction](spectral-reconstruction.md). The separate worst-case classical obstruction is in [Hardness of impurity feedback](hardness.md). These are different assertions: the inverse-linear accuracy bound below is a quantum upper bound, while the hardness result concerns growing input families.
+
+## 1. Finite input and output
+
+The input consists of:
+
+- An integer $n$, an initial computational-basis state on $n$ qubits, and a readout qubit $a$. In a fermionic representation the initial state is a specified Fock product state.
+- A rational final time $T>0$, a rational feedback strength $\lambda>0$, and an explicit ordered list of $K$ constant base-Hamiltonian pulses. All pulse boundaries, coefficients, and parameters are finite binary rational numbers, represented by integer numerators and denominators.
+- On pulse $j$, a list of at most $R$ Pauli strings and real coefficients defining $B_j$. Supplied scalar external sources have already been included in $B_j$.
+- Bounds $\Lambda\geq\max_j\|B_j\|$ and $\alpha_0\geq\max_j\sum_r|b_{jr}|$. One may use $\Lambda=\alpha_0$. These bounds are resources, not constants hidden in the input length.
+- An additive error $0<\epsilon<1$ and a failure probability $0<p<1/2$.
+
+The target is
+
+$$
+\dot\rho(t)=-i[B_j+\lambda m(t)A,\rho(t)],
+\qquad
+A=Z_a,\qquad m(t)=\operatorname{Tr}(A\rho(t)),
+$$
+
+with a classical output $\widehat m_T$ satisfying
+$$
+\Pr\{|\widehat m_T-m(T)|\leq\epsilon\}\geq1-p.
+$$
+
+Let $L_{\rm in}$ be the total input length and $B_{\rm in}$ the largest numerator or denominator bit length. Reading the whole input is included. A polynomial-time Jordan–Wigner conversion of an explicitly listed quadratic bath and constant-size impurity produces an instance of this input format; the resulting term count and Pauli-string lengths are charged. No coefficient, state-preparation, time-evolution, or random-access oracle is part of the input.
+
+The computational-basis initial state requires at most $n$ Pauli $X$ gates. A more general known preparation circuit can be admitted by adding its gate count and any certified preparation error. An unknown quantum state supplied only as consumable copies is a different access model and is not covered by the amplitude-estimation construction below.
+
+## 2. Reconstruction parameters and the error interface
+
+Write $\kappa=\lambda T$ and choose
+$$
+\eta=\frac{\epsilon e^{-2\kappa}}{16},\qquad
+q=\max\left\{1,\left\lceil\log_2\frac{128}{\eta}\right\rceil\right\},
+\qquad
+L_q=2+\frac{2}{\pi}\log(q+1).
+$$
+
+Here $L_q$ is a safe upper bound for the Chebyshev–Lobatto interpolation Lebesgue constant; the logarithm in its definition is natural. Subdivide every input pulse into rational panels of length at most
+$$
+h_*=\min\left\{\frac{1}{64(\Lambda+2\lambda)},
+                     \frac{1}{4\lambda L_q}\right\}.
+$$
+
+The exact real number $h_*$ need not be stored. Compute a rational lower bound within a fixed factor and subdivide each rational input interval accordingly. This changes panel counts only by a constant factor. Denote the panel count by $P$, and set
+$$
+I=\left\lceil\log_2\frac{16L_q}{\eta}\right\rceil,\qquad
+\delta=\frac{\eta}{64L_q},\qquad
+\beta=\frac{\eta}{64},\qquad
+J=P(q+1)I.
+$$
+
+Safe rational lower choices for $\eta,\delta,\beta$, and upper choices for $q,I,L_q$, are equally valid. Ordinary interval arithmetic computes such choices in time polynomial in their bit lengths. Thus transcendental quantities in this displayed parameter prescription do not create exact-real input access.
+
+On each panel the algorithm performs $I$ iterations. Each iteration estimates $q+1$ means, clips the reports to $[-1,1]$, and interpolates them. The polynomial actually used is the one defined by the **stored rational coefficient list**. Its discrepancy from the ideal interpolation of those clipped reports is at most $\beta$ in real sup norm. The total error of each nodal report, relative to exact evolution under the already stored prefix and the current stored polynomial, is at most $\delta$.
+
+The map error $\beta$ and nodal error $\delta$ have distinct roles. Rounding a new coefficient table contributes to $\beta$. Numerically evaluating that already stored polynomial while simulating a nodal experiment contributes to $\delta$. The same discrepancy is not counted twice.
+
+The analytic theorem then gives a local proxy error at most $\eta$. For the state generated by the complete stored curve,
+$$
+\|\rho_{\rm stored}(T)-\rho(T)\|_1
+ \leq \eta(e^{2\kappa}-1),
+$$
+and the final stored polynomial endpoint estimates $m(T)$ within $\eta e^{2\kappa}$, before the small final output-rounding allowance. In particular, there is ample slack below $\epsilon$.
+
+The finite sizes obey
+$$
+\begin{aligned}
+P&=O(K+T\Lambda+\kappa L_q),\\
+q,I&=O\!\left(\kappa+\log(1/\epsilon)+\log L_q\right),\\
+J&=P(q+1)I.
+\end{aligned}
+$$
+
+Clipping the nodal reports implies that an ideal interpolant has sup norm at most $L_q$, coefficient magnitudes at most $2$, and coefficient $1$-norm at most $2(q+1)$. With coefficient rounding included, use the convenient safe bound
+$$
+\|p\|_{\infty,[-1,1]}\leq2L_q.
+$$
+An interpolating proxy can exceed $1$ between nodes. The gate bound does not assume otherwise.
+
+## 3. Ordinary tables and reversible arithmetic
+
+The stored field has $P(q+1)$ rational coefficients. It is an ordinary classical table. A full evolution prefix is compiled as a product of panel propagators in temporal order; the coefficients of the current panel are hardcoded constants in that panel's circuit. There is no need for coherent random access to the entire table.
+
+For one panel, write
+$$
+p(x)=\sum_{r=0}^{q}c_rT_r(x),\qquad -1\leq x\leq1.
+$$
+Reversible Clenshaw evaluation uses $O(q)$ additions and multiplications. With $b$-bit schoolbook arithmetic its gate cost is $O(qb^2)$, including a constant-factor uncomputation overhead, and its retained arithmetic workspace is $O(qb)$. The constants $c_r$ are included in the generated circuit description.
+
+There is no exponential stability loss in this real evaluation. For $|x|\leq1$, the second-kind Chebyshev polynomials satisfy $|U_r(x)|\leq r+1$. Hence the internal Clenshaw values for coefficients bounded by a constant are $O(q^2)$; propagation of fixed-point roundoff costs only a polynomial in $q$. One can allocate, for example, $O(q^5 2^{-s})$ as a conservative evaluation-error bound when $s$ fractional bits and the corresponding integer guard bits are retained.
+
+The real Markov bound also gives
+$$
+\left\|\frac{dp}{dt}\right\|_\infty
+ \leq \frac{4q^2L_q}{h}
+$$
+on a panel of length $h$. This controls both finite node-time errors and the time-grid size required by the Hamiltonian simulator.
+
+For clarity about bit complexity, let $h_{\min}$ be the smallest chosen rational panel length, and define
+$$
+\begin{split}
+\ell=2+B_{\rm in}
+ +\Bigg\lceil\log_2\Bigg(
+ \frac{(n+R+K+2)(P+1)(q+1)^6}{\delta\beta p}
+ &(1+\alpha_0)(1+\lambda)(1+T)\\
+ {}\times &(1+T^{-1})(1+h_{\min}^{-1})
+ \Bigg)\Bigg\rceil .
+\end{split}
+$$
+
+Taking $b=C\ell$ for a sufficiently large fixed universal constant $C$ is enough for all arithmetic below. The input bit lengths bound $\log(1/h_{\min})$ after subdivision by the specified finite panel counts. Very short pulses are therefore charged through their representation; they do not require $1/h_{\min}$ classical work.
+
+To see that this prescription has the required precision, reserve matrix-entry arithmetic error at most
+$$
+\xi=\frac{\delta}{2^{12}(R+1)(1+T)}.
+$$
+The value circuit then perturbs a $d$-sparse Hamiltonian by at most $d\xi$ in operator norm, and its integrated contribution is at most $dT\xi$. The factor $(q+1)^6$, together with the coefficient and parameter magnitudes in $\ell$, covers the preceding Clenshaw bound. For new coefficient tables, approximate each coefficient to within $\beta/[2(q+1)]$ and allocate the other half of $\beta$ to the transform computation. Since $|T_r|\leq1$ on the real interval, these coefficient errors sum to at most $\beta$.
+
+A direct discrete cosine transform takes $O(q^2)$ arithmetic operations per table. Computing its trigonometric constants, rational panel subdivisions, and rounded Chebyshev nodes takes polynomial bit time: argument reduction and convergent power series, for example, give a conservative $O(b^3)$ bit-operation cost per elementary constant. A deliberately loose classical bound for these tasks is $O(Jq\,b^3)$, in addition to reading and organizing the supplied Hamiltonians. There is no exact transcendental-function oracle.
+
+## 4. Explicit sparse-Hamiltonian access
+
+For any stored proxy, put
+$$
+\alpha=\alpha_0+2\lambda L_q,\qquad d\leq R+1.
+$$
+Then $\|B_j+\lambda pA\|_{\max}\leq\alpha$. Every Pauli string sends a computational-basis row to the column obtained by XOR with its $X/Y$ mask. Precompute the distinct masks for each supplied pulse; their number is at most $R+1$, including $A$.
+
+The sparse location circuit selects one of these **hardcoded** masks and XORs it with the row. If the in-place location convention is used, a scan of the distinct masks also recovers the label so that workspace can be uncomputed. There is no collision ambiguity after duplicate masks have been combined.
+
+The matrix-value circuit scans the Pauli list. For each term it checks the row/column mask, computes its sign or factor of $i$ from the row's relevant bits, and conditionally adds its rational coefficient. It also evaluates the single time-dependent coefficient $\lambda p(t)$. A conservative Toffoli/Clifford gate bound per location or value query, with clean uncomputation, is
+$$
+\boxed{\;
+C_{\rm or}=O\!\left((R+1)(n+b)+qb^2\right).
+\;}
+$$
+
+The workspace for this arithmetic is
+$$
+O\!\left(n+\log(R+1)+qb\right).
+$$
+Input constants are approximated consistently when needed; one may evaluate a common rounded Pauli-coefficient sum to preserve Hermiticity. Alternatively, a symmetrized entry implementation achieves the same bound and the same allocated entry error. This construction pays the implementation cost of the sparse oracles; their calls are not treated as unit-cost physical operations.
+
+Finite-value rounding is handled as a uniform error, not by differentiating a rounded step function. Analyze the time quadrature for the smooth, exactly stored polynomial Hamiltonian first. Replacing each sampled matrix by one whose entries differ by at most $\xi$ changes its operator norm by at most $d\xi$. On a short Dyson segment of length $t$, telescoping each product and summing the factorial weights bounds the additional error by $O(t\,d\xi)$; its integrated-norm segment size is bounded by a constant. Summing segments gives $O(Td\xi)$. The derivative bound used for quadrature belongs to the ideal polynomial, and no differentiability is assumed of the finite-value evaluator.
+
+## 5. Simulation of a complete prefix
+
+Use the truncated-Dyson algorithm of Kieferová, Scherer, and Berry for each known panel separately. Its sparse-input theorem has query scaling
+$$
+O\!\left(
+d^2H_{\max}t\,
+\frac{\log(dH_{\max}t/\nu)}
+     {\log\log(dH_{\max}t/\nu)}
+\right),
+$$
+with additional gate costs depending logarithmically on the time derivative. Here the required location and value circuits are the explicit circuits just constructed. All original pulse jumps and all reconstructed panel boundaries are split exactly, so derivatives are taken only inside smooth panels. [KSB19, Sec. II, Eqs. (1)–(3)](https://arxiv.org/html/1805.00582v1#S2)
+
+Each nodal query time is classical. Its circuit simulates the complete earlier stored prefix, followed by the appropriate fraction of the current panel. The final partial interval is compiled separately; no variable-endpoint evolution oracle is assumed. Rounding that endpoint by at most $\delta/[2^{10}(1+\alpha)]$ adds at most its allocated nodal error, since a prescribed-unitary mean has time derivative bounded by $2\alpha$.
+
+Set
+$$
+W_{\rm sim}=P+d^2\alpha T.
+$$
+The $P$ term pays a constant segment overhead even when a panel has very small integrated norm. Apply the simulator with each panel's error at most a common constant times $\delta/P$, using the derivative bound from Section 3. Its ideal elementary-gate count is bounded by
+$$
+O\!\left(W_{\rm sim}\ell\,[C_{\rm or}+n+\ell]\right).
+$$
+The logarithms have been upper-bounded by $\ell$, rather than optimized; all logarithms are regularized by a constant when their argument is small.
+
+For a completely finite gate set, compile its constant-size elementary rotations with a standard constructive Solovay–Kitaev algorithm. The $O(\log^{3.97}(1/\omega))$ sequence-length bound permits a conservative $O(\ell^4)$ overhead after distributing a total synthesis error $O(\delta)$ over the prefix. Its classical compilation time is polynomial in the same logarithmic precision. [Dawson–Nielsen 2005](https://arxiv.org/abs/quant-ph/0505030v2)
+
+Consequently, one convenient fixed-gate-set bound is
+$$
+\boxed{\;
+C_{\rm prefix}
+ =O\!\left(W_{\rm sim}\ell^5[C_{\rm or}+n+\ell]\right).
+\;} \tag{1}
+$$
+The bound includes all panels of a complete replay. It is sufficient for the claimed accuracy dependence, without requiring query-optimal simulation or modern optimal single-qubit synthesis. Classical generation of one such circuit can conservatively be bounded by $O(C_{\rm prefix}\ell^4)$ bit operations, covering numerical angle generation and gate-list construction.
+
+The Dyson order and each clock/selector register have $O(\ell)$ bits or entries, so a safe coherent workspace bound for a prefix is
+$$
+O(n+qb+\ell^2).
+$$
+The large number of time-grid points required by quadrature is represented by a logarithmic-size quantum time register and evaluated by the arithmetic circuit. No classical enumeration of that grid is used.
+
+## 6. Scalar estimation, inverse circuits, and confidence
+
+After preparation and a compiled prefix $V$, the readout probability is
+$$
+a_V=\Pr\{a=1\},\qquad m_V=1-2a_V.
+$$
+Amplitude estimation to additive mean error $O(\delta)$ uses $O(1/\delta)$ applications of $V$, its generated inverse, and the relevant reflections. Independent repetition and a median give conditional failure probability at most $p/(2J)$ using an additional $O(\log(J/p))$ factor. [Brassard–Høyer–Mosca–Tapp 2002](https://arxiv.org/abs/quant-ph/0005055)
+
+The reflection about the initial all-zero register acts on the system and all retained work registers. It costs $O(n+qb+\ell^2)$ gates and at most the same order of clean workspace by a reversible AND tree, and is included below. Initial basis-state preparation costs $O(n)$. Controlled operations and inverses are constructed from the circuit's gate list. No coherent control of an unknown analog device is assumed.
+
+For definiteness, take the compiled gate set to be Clifford+$T$, including inverses. Controlled versions have constant exact overhead with clean ancillas. For example, a controlled-$T$ computes the AND of the control and target into an ancilla, applies $T$ to that ancilla, and uncomputes; a controlled-CNOT is a Toffoli, and controlled-$H$ has a constant Clifford+$T$ decomposition. Thus controlling the already compiled $V$ does not require an independently approximated target evolution or a new accuracy parameter. Its inverse is the exact reverse of that same finite gate list.
+
+The phase-estimation control registers, Fourier transform, and classical conversion of a phase estimate into a probability also have finite circuits or bit algorithms. Their polynomial-in-$\ell$ overhead is absorbed by (2)–(3). The Fourier-transform rotations can be synthesized to a fixed small error per amplitude-estimation run, preserving a constant success probability before the median amplification; they do not require an additional inverse-$\delta$ factor.
+
+For example, split the total nodal allowance $\delta$ between statistical estimation, Hamiltonian-entry arithmetic, Dyson truncation/discretization, node-time rounding, gate synthesis, and final numerical rounding. Each deterministic contribution can be made at most $\delta/16$, and statistical mean error at most $\delta/4$; the total is then below $\delta$. The circuit precision requirements in Sections 3–5 meet these allocations.
+
+An important distinction is that one compiles **one fixed unitary $V$** for a nodal experiment and uses its actual circuit inverse $V^\dagger$. Amplitude estimation estimates the probability of that fixed unitary. Its deterministic bias relative to the prescribed exact propagator is $O(\delta)$, independently of how often amplitude estimation calls it. It is therefore unnecessary to divide this systematic approximation budget by the number of amplitude-estimation calls. This reasoning does not apply to unmodeled, time-varying physical gate errors or an independently approximated, mismatched inverse; the present theorem counts logical fault-tolerant gates.
+
+The nodal circuits are chosen adaptively from prior classical reports. Their error guarantee is uniform for every admissible stored table. Conditional on every earlier report, each new estimate has failure probability at most $p/(2J)$, so a union bound is valid despite the adaptivity.
+
+## 7. End-to-end resource theorem
+
+For the finite input in Section 1, the algorithm above outputs the requested scalar with failure probability at most $p$. With
+$$
+C_{\rm or}=O((R+1)(n+b)+qb^2),\quad
+W_{\rm sim}=P+(R+1)^2\alpha T,\quad b=O(\ell),
+$$
+one conservative quantum logical-gate bound is
+$$
+\boxed{
+G=
+O\!\left[
+\frac{J}{\delta}\log\!\frac{2J}{p}\,
+\left(
+n+qb+\ell^2+
+W_{\rm sim}\ell^5[C_{\rm or}+n+\ell]
+\right)
+\right].
+} \tag{2}
+$$
+
+Classical bit work, in addition to quantum execution, can be bounded by
+$$
+\boxed{
+C_{\rm cl}=
+O\!\left(
+L_{\rm in}+KR^2(n+B_{\rm in})+
+Jq\,b^3+
+J C_{\rm prefix}\ell^4+G\ell
+\right).
+} \tag{3}
+$$
+The coarse mask-deduplication term can be improved by sorting. The circuit-generation term deliberately recompiles each requested nodal circuit from its full classical description; reuse can reduce it. This compilation work contributes only polylogarithmically in $1/\epsilon$ at fixed parameters. The final $G\ell$ term conservatively charges the classical controller for issuing every executed elementary gate with its finite qubit addresses, including all amplitude-estimation repetitions. Thus even an explicitly expanded execution schedule is paid; it adds only a logarithm to the displayed quantum execution count.
+
+The coherent workspace is
+$$
+O(n+qb+\ell^2),
+$$
+including an $O(\log(1/\delta))$-qubit amplitude-estimation register, already absorbed by $\ell^2$. Classical field storage is $O(Pqb)$ bits, plus the supplied input and a current compiled circuit. A gate list can be streamed; storing every compiled circuit is unnecessary.
+
+The final value of the last stored polynomial at its endpoint supplies the requested $m(T)$. Evaluating and rounding that polynomial uses the same bounded arithmetic. A different final Pauli observable can instead be estimated with one additional fully priced replay and amplitude-estimation call.
+
+Substituting $\delta=\epsilon e^{-2\kappa}/(1024L_q)$ into (2) gives the useful abbreviated form
+$$
+G=\frac{e^{2\kappa}}{\epsilon}\,
+\operatorname{poly}\!\left(
+n,R,K,T\Lambda,\alpha T,
+\kappa,\log(1/\epsilon),B_{\rm in},\log(1/p)
+\right),
+$$
+with the explicit factors given above. For fixed physical/input parameters and fixed failure probability,
+$$
+\boxed{G+C_{\rm cl}=\widetilde O(\epsilon^{-1}).}
+$$
+All omitted accuracy dependence is polylogarithmic. There is no inverse-$\epsilon$ number of temporal panels, coefficient entries, coherent history states, or unpriced prefix preparations.
+
+For growing instances this is polynomial when the explicit input, norms, duration, $1/\epsilon$, and $\kappa$ are polynomially bounded **and** $e^{2\kappa}$ is polynomially bounded, for example $\kappa=O(\log L_{\rm in})$. The central hardness regime $\kappa=1$ satisfies this condition. The theorem does not claim polynomial cost for arbitrary polynomially large $\kappa$.
+
+## 8. What the accuracy statement does and does not establish
+
+The reconstruction theorem removes an additional algebraic accuracy penalty from acquiring the self-consistent field. Amplitude estimation and repeated replay themselves are established tools. In particular, Andress and collaborators already analyze observable-dependent Hamiltonians, repeated state preparation, and amplitude-estimation precision; their time-mesh and nodal-error parameters remain separate in that analysis. The contribution established here is that a finite, noisy spectral representation closes the **final requested accuracy** account while retaining inverse-linear scalar readout cost. [Andress et al., Sec. 2.8](https://arxiv.org/html/2410.03838v1#S2.SS8)
+
+This is not a universal classical lower bound proportional to $\epsilon^{-1}$. At fixed small $n$, classical state-vector integration can have excellent accuracy dependence, and analytically solvable instances can be easier still. The classical obstruction in this project concerns a growing, explicitly controlled impurity family. Nor does the gate theorem estimate a hardware crossover, fault-tolerant physical-qubit overhead, or a particular material's computational cost.
+
+## 9. A canonical Carleman representation is not the same resource promise
+
+Vectorize the density matrix as $r=\operatorname{vec}\rho$, and put $a=\operatorname{vec}A$. Up to tensor-factor order, the quadratic term has the canonical flattening
+$$
+\lambda(a^\dagger r)\mathcal L_A r,
+\qquad
+B_{\rm quad}=\lambda\mathcal L_A\otimes a^\dagger,\qquad
+\mathcal L_A=-i(I\otimes A-A^T\otimes I).
+$$
+Thus
+$$
+\|B_{\rm quad}\|_2
+ =\lambda\|\mathcal L_A\|_2\|A\|_F.
+$$
+For a local Pauli on a $D=2^n$-dimensional space this is $2\lambda\sqrt D$; the trace-contraction row has $D$ nonzero entries. The canonical pure-state cubic flattening likewise has a factor $\lambda\|A\|\,\|A\|_F=\lambda\sqrt D$, before harmless realification constants.
+
+Consequently, a generic theorem whose costs depend on those flattened norms and sparsities does not automatically imply the present polynomial-in-$n$ bound. The physical expectation algorithm uses $\|A\|=1$, trace normalization, positivity, and an explicit short operator description instead. This is a comparison of resource promises, not a lower bound on every Carleman reformulation or every many-copy method. Structured algorithms can exploit the bounded physical interaction $A\otimes A$; their existence is compatible with the bound above. See the broader comparison in [Prior work](prior-work.md).
