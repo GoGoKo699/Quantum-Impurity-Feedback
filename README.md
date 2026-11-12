@@ -8,41 +8,41 @@ This repository develops three linked results:
 
 1. **A finite-input quantum algorithm.** A noisy spectral reconstruction of the scalar charge field has a fully implemented logical-gate cost with inverse-linear accuracy dependence, up to logarithms, at fixed physical parameters and fixed failure probability. Every response experiment prepares the initial state and replays its complete evolution prefix. The reconstruction extends to a fixed number of bounded fields when their Hamiltonian and measurement implementations are explicitly supplied and charged.
 2. **A substantial classical easy regime.** A quadratic bath with a fixed impurity and a Gaussian initial state admits an explicit Poisson/Dyson/Wick estimator. When the non-Gaussian interaction action and feedback action are logarithmic in input size, and the remaining resources are polynomially bounded, the entire feedback task is classically polynomial.
-3. **A restricted hard family beyond that regime.** Explicitly programmable two-mode impurity dynamics retains a conditional complexity obstruction at nonzero feedback action. A source-free construction has a direct BQP-complete constant-gap decision problem, and its final feedback stage changes the same measured mean by more than $`0.08`$.
+3. **A restricted hard family beyond that regime.** Explicitly programmable two-mode impurity dynamics retains a conditional complexity obstruction at nonzero feedback action. A source-free construction has a direct BQP-complete constant-gap decision problem, and its final feedback stage changes the same measured mean by more than $`\mathstrut 0.08`$.
 
-The advantage established here is a **conditional growing-input complexity separation**, assuming $`\mathrm{BPP}\ne\mathrm{BQP}`$. No practical device crossover or typical-material advantage is established. The hard family allows and pays for polynomially large controls; its universal quantum computation is inherited, and its final nonlinear probe has an analytic solution.
+The advantage established here is a **conditional growing-input complexity separation**, assuming $`\mathstrut \mathrm{BPP}\ne\mathrm{BQP}`$. No practical device crossover or typical-material advantage is established. The hard family allows and pays for polynomially large controls; its universal quantum computation is inherited, and its final nonlinear probe has an analytic solution.
 
 ## The task
 
-The input is an explicit finite list of Pauli Hamiltonian pulses, a known initial preparation, a local centered occupation $`A=1-2n_u`$, a final time $`T`$, and a feedback strength $`\lambda`$. The target equation is
+The input is an explicit finite list of Pauli Hamiltonian pulses, a known initial preparation, a local centered occupation $`\mathstrut A=1-2n_u`$, a final time $`\mathstrut T`$, and a feedback strength $`\mathstrut \lambda`$. The target equation is
 
 ```math
 \dot\rho(t)=-i[B(t)+\lambda m(t)A,\rho(t)],
 \qquad m(t)=\mathrm{Tr}[A\rho(t)].
 ```
 
-Return one classical estimate of $`m(T)`$ with additive error $`\epsilon`$ and failure probability at most $`p`$. The corresponding occupation is $`(1-m(T))/2`$. The mean curve is unknown and must be acquired; an intermediate quantum state or a query oracle for that curve is not part of the input.
+Return one classical estimate of $`\mathstrut m(T)`$ with additive error $`\mathstrut \epsilon`$ and failure probability at most $`\mathstrut p`$. The corresponding occupation is $`\mathstrut (1-m(T))/2`$. The mean curve is unknown and must be acquired; an intermediate quantum state or a query oracle for that curve is not part of the input.
 
-For the impurity application, $`B=Q+V+bA`$, where $`Q`$ is a quadratic bath Hamiltonian, $`V`$ is an interaction on a fixed number of impurity modes, and $`b`$ is an explicit source. The direct hard family sets $`b=0`$. Correlations inside the impurity–bath system are retained. Only its specified scalar charge coupling is closed at mean-field level.
+For the impurity application, $`\mathstrut B=Q+V+bA`$, where $`\mathstrut Q`$ is a quadratic bath Hamiltonian, $`\mathstrut V`$ is an interaction on a fixed number of impurity modes, and $`\mathstrut b`$ is an explicit source. The direct hard family sets $`\mathstrut b=0`$. Correlations inside the impurity–bath system are retained. Only its specified scalar charge coupling is closed at mean-field level.
 
 The [model and output contract](science/model.md) also gives a collective-unit Hartree interpretation. The algorithmic error guarantee concerns the stated closed equation; a finite-array modeling error would require an additional physical approximation theorem.
 
 ## What the complete cost contains
 
-Let $`\kappa=\lambda T`$ be the feedback action. The reconstruction uses $`P`$ time panels, polynomials of degree $`q`$, $`I`$ contraction rounds per panel and
+Let $`\mathstrut \kappa=\lambda T`$ be the feedback action. The reconstruction uses $`\mathstrut P`$ time panels, polynomials of degree $`\mathstrut q`$, $`\mathstrut I`$ contraction rounds per panel and
 
 ```math
 J=P(q+1)I
 ```
 
-scalar acquisitions. With a computable base norm bound $`\Lambda`$, the parameter choices satisfy
+scalar acquisitions. With a computable base norm bound $`\mathstrut \Lambda`$, the parameter choices satisfy
 
 ```math
 P=O(K+T\Lambda+\kappa L_q),\qquad
 q,I=O\!\left(\kappa+\log(1/\epsilon)+\log L_q\right),
 ```
 
-where $`K`$ is the number of supplied pulses and $`L_q=O(\log(q+1))`$ is a certified interpolation bound. Each nodal response has accuracy
+where $`\mathstrut K`$ is the number of supplied pulses and $`\mathstrut L_q=O(\log(q+1))`$ is a certified interpolation bound. Each nodal response has accuracy
 
 ```math
 \delta=\Theta\!\left(\frac{\epsilon e^{-2\kappa}}{L_q}\right).
@@ -57,7 +57,7 @@ G=O\!\left[
 \right],
 ```
 
-with both costs explicitly implemented and bounded there. In particular, $`C_{\rm prefix}`$ includes a **full replay from the original input state on every call**.
+with both costs explicitly implemented and bounded there. In particular, $`\mathstrut C_{\rm prefix}`$ includes a **full replay from the original input state on every call**.
 
 | Resource | Treatment |
 |---|---|
@@ -69,7 +69,7 @@ with both costs explicitly implemented and bounded there. In particular, $`C_{\r
 | Classical work and storage | Input processing, coefficient transforms, circuit generation, every gate-control instruction and the stored field are included |
 | Output | One classical scalar with specified error and failure probability |
 
-At fixed model parameters and fixed failure probability the resulting precision dependence is $`\epsilon^{-1}\mathrm{polylog}(1/\epsilon)`$. The dependence on $`e^{2\kappa}`$, Hamiltonian resources and input size remains explicit. This is an upper bound; no universal classical $`\epsilon^{-2}`$ lower bound is asserted. At fixed Hilbert-space dimension, deterministic classical integration can have a better precision dependence.
+At fixed model parameters and fixed failure probability the resulting precision dependence is $`\mathstrut \epsilon^{-1}\mathrm{polylog}(1/\epsilon)`$. The dependence on $`\mathstrut e^{2\kappa}`$, Hamiltonian resources and input size remains explicit. This is an upper bound; no universal classical $`\mathstrut \epsilon^{-2}`$ lower bound is asserted. At fixed Hilbert-space dimension, deterministic classical integration can have a better precision dependence.
 
 ## Where classical shortcuts work, and where the obstruction survives
 
@@ -79,17 +79,17 @@ Write the non-Gaussian interaction as a sum of normalized even Majorana monomial
 S=\int_0^T\sum_a|v_a(t)|\,dt.
 ```
 
-For $`V=\chi n_un_v`$, after absorbing identity and quadratic pieces into $`Q`$, the quartic contribution is $`S=\frac14\int_0^T|\chi(t)|\,dt`$. This action differs from $`\kappa`$: a strongly interacting impurity can have large $`S`$ and moderate feedback action.
+For $`\mathstrut V=\chi n_un_v`$, after absorbing identity and quadratic pieces into $`\mathstrut Q`$, the quartic contribution is $`\mathstrut S=\frac14\int_0^T|\chi(t)|\,dt`$. This action differs from $`\mathstrut \kappa`$: a strongly interacting impurity can have large $`\mathstrut S`$ and moderate feedback action.
 
 | Regime | Supported conclusion |
 |---|---|
 | Entire Hamiltonian and feedback remain quadratic, Gaussian input | Covariance-matrix evolution closes classically |
 | Number-conserving vacuum or completely filled input | The occupation dynamics is trivial |
-| Fixed impurity, Gaussian input, $`S+\kappa=O(\log N)`$ | The explicit classical estimator solves the full task in polynomial time when other resources and $`1/\epsilon`$ are polynomial in $`N`$ |
-| General programmable impurity, $`\kappa=1`$ | A universal efficient classical estimator would imply $`\mathrm{BPP}=\mathrm{BQP}`$ by an adaptive reduction |
+| Fixed impurity, Gaussian input, $`\mathstrut S+\kappa=O(\log N)`$ | The explicit classical estimator solves the full task in polynomial time when other resources and $`\mathstrut 1/\epsilon`$ are polynomial in $`\mathstrut N`$ |
+| General programmable impurity, $`\mathstrut \kappa=1`$ | A universal efficient classical estimator would imply $`\mathstrut \mathrm{BPP}=\mathrm{BQP}`$ by an adaptive reduction |
 | Source-free, polynomial-strength compressed computation followed by an active probe | A direct BQP-complete constant-gap decision problem; feedback changes the final measured mean by a certified constant |
 
-The [classical-boundary proof](science/classical-boundary.md) pays for finite sampling, Gaussian propagation, Pfaffian evaluation and feedback reconstruction. Its variance bound is exponential in $`S`$ and is a sufficient algorithmic bound, not a classical lower bound. Large $`S`$ alone does not certify hardness.
+The [classical-boundary proof](science/classical-boundary.md) pays for finite sampling, Gaussian propagation, Pfaffian evaluation and feedback reconstruction. Its variance bound is exponential in $`\mathstrut S`$ and is a sufficient algorithmic bound, not a classical lower bound. Large $`\mathstrut S`$ alone does not certify hardness.
 
 The [hardness proof](science/hardness.md) states the required controls, initial particle occupations, routing, rational compilation and decision promises. Compressing the computation into fixed time scales all required Hamiltonian strengths, including the quartic interaction. A fixed-time, fixed-strength claim would not follow from that construction.
 
@@ -97,7 +97,7 @@ The [hardness proof](science/hardness.md) states the required controls, initial 
 
 ![Exact nonlinear charge probe and its feedback-free comparison](assets/feedback-probe.svg)
 
-For $`H=X+2zZ`$ starting at the positive $`Z`$ pole, the exact mean is $`z(t)=\mathrm{sech}(2t)`$. Removing feedback gives $`\cos(2t)`$. This observable difference is useful for checking signs, conventions and reconstruction error. **The one-qubit probe itself is analytically tractable.** The hard construction uses it only as an active transducer after the quantum computation. See [the exact solution and its role](science/examples.md).
+For $`\mathstrut H=X+2zZ`$ starting at the positive $`\mathstrut Z`$ pole, the exact mean is $`\mathstrut z(t)=\mathrm{sech}(2t)`$. Removing feedback gives $`\mathstrut \cos(2t)`$. This observable difference is useful for checking signs, conventions and reconstruction error. **The one-qubit probe itself is analytically tractable.** The hard construction uses it only as an active transducer after the quantum computation. See [the exact solution and its role](science/examples.md).
 
 ## Learning route
 

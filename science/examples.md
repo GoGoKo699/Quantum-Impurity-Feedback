@@ -15,7 +15,7 @@ This is an analytically soluble instance. Its role is to expose the feedback eff
 
 ## 1. Derivation of the critical probe
 
-Writing the Bloch coordinates as $`(x,y,z)`$ gives
+Writing the Bloch coordinates as $`\mathstrut (x,y,z)`$ gives
 
 ```math
 \begin{aligned}
@@ -33,7 +33,7 @@ x^2+y^2+z^2=1,\qquad
 \Omega x+\frac\lambda2z^2=\frac\lambda2
 ```
 
-are conserved. At $`\lambda=2\Omega`$, a solution satisfying the initial condition is
+are conserved. At $`\mathstrut \lambda=2\Omega`$, a solution satisfying the initial condition is
 
 ```math
 \begin{aligned}
@@ -44,9 +44,9 @@ y(t)&=-\mathrm{sech}(\lambda t)\tanh(\lambda t).
 \tag{E3}
 ```
 
-Direct substitution in (E2) verifies all three equations, including the initially zero derivative of $`z`$. Uniqueness of the finite-dimensional equation identifies this as the physical solution. Starting from the opposite pole gives $`z(t)=-\mathrm{sech}(\lambda t)`$, with the corresponding sign reversal of $`y`$ and unchanged $`x`$.
+Direct substitution in (E2) verifies all three equations, including the initially zero derivative of $`\mathstrut z`$. Uniqueness of the finite-dimensional equation identifies this as the physical solution. Starting from the opposite pole gives $`\mathstrut z(t)=-\mathrm{sech}(\lambda t)`$, with the corresponding sign reversal of $`\mathstrut y`$ and unchanged $`\mathstrut x`$.
 
-With the feedback term removed, the same $`\Omega X`$ drive gives
+With the feedback term removed, the same $`\mathstrut \Omega X`$ drive gives
 
 ```math
 \begin{aligned}
@@ -57,7 +57,7 @@ z_{\mathrm{bare}}(t)&=\cos(\lambda t).
 
 ![Exact self-consistent and feedback-free probe responses](../assets/feedback-probe.svg)
 
-At dimensionless time $`u=\lambda t=2`$, the centered charges differ by approximately $`0.68195`$. The physical occupations differ by half that amount. Thus feedback can alter the actual requested scalar by a constant even though this particular example is easy classically.
+At dimensionless time $`\mathstrut u=\lambda t=2`$, the centered charges differ by approximately $`\mathstrut 0.68195`$. The physical occupations differ by half that amount. Thus feedback can alter the actual requested scalar by a constant even though this particular example is easy classically.
 
 ## 2. A nonlinear transducer after a hard computation
 
@@ -65,7 +65,7 @@ The same probe can follow a circuit-encoded impurity evolution. Amplifying the c
 
 The [hardness account](hardness.md) states the complete encoding, pulse/norm charges and error constants. Its source-free construction concentrates the computation into a short interval and then applies this probe. Its hard computation is inherited from ordinary quantum universality; the analytic probe demonstrates that the final nonlinear response can remain active without erasing the decision signal. Concentrated controls are a paid assumption.
 
-On a single-occupied impurity pair, $`n_un_v=0`$. The density-density impurity interaction therefore vanishes on that probe subspace even when it is always on elsewhere. This identity does not make the preceding interacting computation Gaussian.
+On a single-occupied impurity pair, $`\mathstrut n_un_v=0`$. The density-density impurity interaction therefore vanishes on that probe subspace even when it is always on elsewhere. This identity does not make the preceding interacting computation Gaussian.
 
 ## 3. Numerical verification and its scope
 
